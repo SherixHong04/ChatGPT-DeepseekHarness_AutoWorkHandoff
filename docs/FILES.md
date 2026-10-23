@@ -8,7 +8,9 @@
 - src/harness-chats、harness-chat-plugin：新任务工作区/聊天管理及普通归档。
 - src/managed-session、managed-worker：同一正常桌面聊天的派发、状态读取、共享副本和稳定成果取回。没有单独启动新SDK会话。
 - src/harness-sdk、harness-worker、job-runner：保留的旧SDK路线及旧接口测试；新管理任务不会自动回退。
-- src/followup：生成原对话接回计划，实际调度由宿主原生工具创建。
+- src/followup：生成本地原对话接回计划，计划不等于已登记计时。
+- src/native-control：官方控制代理的WebSocket握手、只读额度/状态请求和正常原生消息排队，不启动或恢复新宿主。
+- src/local-wake、local-wake-cli、scripts/wake：现实时间到期、SQLite待办、睡眠后补查、额度和忙闲准入、一次投递及原对话回执。
 - src/index、cli、file-demo：导出、本地命令及无模型演示。
 - src/trial-policy：隔离的测试策略计算；不会自动变成正式设置。
 - plugins/harness-chat-manager：通用插件入口、元数据及构建产物。个性化加载配置由setup init生成。

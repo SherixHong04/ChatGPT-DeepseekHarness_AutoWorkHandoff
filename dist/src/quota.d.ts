@@ -5,7 +5,7 @@ export interface QuotaWindow {
 }
 export interface QuotaObservation {
     schemaVersion: 1;
-    source: 'codex-app-get-usage-limits';
+    source: 'codex-app-get-usage-limits' | 'codex-app-server-read';
     observedAt: number;
     ordinaryUsageAllowed: boolean | null;
     spendControlReached: boolean | null;

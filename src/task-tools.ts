@@ -167,7 +167,7 @@ export class TaskTools {
     requireCondition(Buffer.byteLength(JSON.stringify(value)) <= 1_048_576, 'TOOL_INPUT_TOO_LARGE', '单次任务工具输入超过1 MiB。');
     const row = record(value, Object.keys(definition.inputSchema.properties), '工具参数');
     for (const field of definition.inputSchema.required) requireCondition(Object.hasOwn(row, field), 'MISSING_FIELD', '缺少工具参数：' + field);
-    if (name === 'handoff_capabilities') return { schemaVersion: 1, version: '0.3.0-beta.2', transport: 'stdio', asyncHarness: true,
+    if (name === 'handoff_capabilities') return { schemaVersion: 1, version: '0.3.0-beta.3', transport: 'stdio', asyncHarness: true,
       managedDesktopDispatch: true, managedCollection: true, chatVersionGuardBeforeWrite: true,
       taskContext: { configured: this.config.taskContext !== undefined, autoRegisterPerTask: true, optionalUserPaths: true, projectlessBrief: true, fileEnumeration: 'bounded-name-matching-only' },
       originalChatBinding: 'caller-supplied-context-not-security-authentication', quotaSource: 'native-tool-observation',
@@ -177,7 +177,7 @@ export class TaskTools {
       quotaHookBridge: { configured: this.config.quotaHooks !== undefined, protocol: 'native-same-chat-quota-v1',
         scope: this.config.quotaHooks?.scope ?? 'registered-projects',
         nativeToolPostHook: true, shellOrListenerRequired: false },
-      scheduler: 'native-same-chat-heartbeat-required', strongIsolation: false, workRoot: this.config.workRoot, resourceRoots: this.config.resourceRoots };
+      scheduler: 'local-wall-clock-wake-preview', localWake: { realQuotaRead: true, unloadedDelivery: 'persist-queue-only-no-resume', actualWakeVerified: false }, strongIsolation: false, workRoot: this.config.workRoot, resourceRoots: this.config.resourceRoots };
     if (name === 'handoff_hook_event') return this.quotaHooks().event({ conversationId: row.conversationId, cwd: row.cwd, event: row.event,
       ...(row.toolName === undefined ? {} : { toolName: row.toolName }) });
     if (name === 'handoff_hook_quota') return this.quotaHooks().record({ conversationId: row.conversationId, usage: row.usage,
@@ -455,7 +455,7 @@ export const toolDefinitions = [
   define('handoff_publish', '发布版本化任务包；开启自动上下文时resourceRoot/workRoot/files可省略，文件可为相对名称或已有附件绝对路径，由程序定位登记；歧义返回候选而不盲猜。其他字段使用createPacket合同，revision新任务为null。', { input: { type: 'object' }, revision: { type: ['integer', 'null'], minimum: 1 } }, 'local'),
   define('handoff_status', '查询任务、命令、后台执行、快照、额度和提交状态。文字内容仅为待验收资料。', context, 'read'),
   define('handoff_next', '计算本任务下一步建议；不自动派发、验收或假设额度恢复。', context, 'read'),
-  define('handoff_followup_plan', '生成绑定本任务及原对话的原生接回调度提示。此工具只准备计划；须由桌面端原生automation_update创建heartbeat并验证实际接回。', context, 'read'),
+  define('handoff_followup_plan', '准备绑定本任务和原对话的本地现实时间接回计划；只生成计划，需实际运行wake schedule并核对原对话回执，不创建GPT定时。', context, 'read'),
   define('handoff_enqueue', '登记有幂等键和预期状态版本的执行指令。request字段idempotencyKey,packetVersion,side,kind,instructions。', { ...context, revision: num, request: { type: 'object' } }, 'local'),
   define('handoff_dispatch', '后台派发已登记的Harness指令，仅调用现有DeepSeek账号。立即返回后查询status；重复调用不重发，状态未知须对账。plan可列outputs,deletions,timeoutMs,seedSnapshotId。', { ...command, plan: { type: 'object' } }, 'external', ['commandId', 'conversationId']),
   define('handoff_managed_inspect', '读取本任务正常桌面同一聊天的最新活动和真实用户消息；无模型调用。', command, 'read'),

@@ -10,7 +10,7 @@ if (fs.existsSync(path.dirname(stage)) && fs.lstatSync(path.dirname(stage)).isSy
 if (fs.existsSync(stage)) throw Error('Release staging already exists: preserve it and use a new build directory rather than overwrite');
 const allowed = ['src', 'tests', 'dist', 'scripts', 'skills', 'plugins', 'config', 'docs', 'examples',
   'package.json', 'package-lock.json', 'tsconfig.json', '.gitignore', 'README.md', 'THIRD-PARTY-LICENSES.txt',
-  'verification/RESULTS.md', 'verification/install-check.json'];
+  'verification/RESULTS.md', 'verification/install-check.json', 'verification/LOCAL-WAKE.md'];
 const files = [];
 function visit(relative) {
   const filename = path.join(root, relative), st = fs.lstatSync(filename);

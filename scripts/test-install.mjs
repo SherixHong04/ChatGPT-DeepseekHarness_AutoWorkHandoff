@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js';
 const root = fileURLToPath(new URL('../', import.meta.url)); fs.mkdirSync(path.join(root, '.local'), { recursive: true });
+const expectedVersion = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8')).version;
 const dir = fs.mkdtempSync(path.join(root, '.local', 'share-check-'));
 const project = path.join(dir, 'source project'), state = path.join(dir, 'runtime state'), home = path.join(dir, 'test user home'), launcher = path.join(dir, 'dsh.cmd');
 fs.mkdirSync(project); fs.mkdirSync(home); fs.writeFileSync(launcher, '@echo off\r\nexit /b 1\r\n');
@@ -66,7 +67,7 @@ const client = new Client({ name: 'shared-preview-isolated-check', version: '1.0
 try {
   await client.connect(new StdioClientTransport({ command: process.execPath, args: [path.join(root, 'dist/src/mcp-server.js'), '--config', path.join(state, 'tools.local.json')], stderr: 'pipe' }));
   const reply = await client.callTool({ name: 'handoff_capabilities', arguments: {} }); assert(!reply.isError);
-  const cap = JSON.parse(reply.content.find(x => x.type === 'text').text); assert.equal(cap.version, '0.3.0-beta.2'); assert.equal(cap.managedDesktopDispatch, true);
+  const cap = JSON.parse(reply.content.find(x => x.type === 'text').text); assert.equal(cap.version, expectedVersion); assert.equal(cap.managedDesktopDispatch, true);
   assert.equal(cap.quotaHookBridge.scope, 'all-conversations'); assert.equal(cap.taskContext.configured, true);
 } finally { await client.close(); }
 fs.appendFileSync(path.join(home, 'config.toml'), '\n# user changed after installation\n');

@@ -109,8 +109,14 @@ export class QuotaHookBridge {
                 evidence: automatic ? 'hook-post-tool' : 'model-ack' };
         }, observation);
         const decision = assessQuota(observation, this.quotaPolicy, now);
+        const handoffRequired = decision.state === 'ready' && !decision.allowWork && decision.allowHandoff;
+        const nextAction = decision.state !== 'ready' ? 'query-again-or-wait'
+            : decision.allowWork ? 'continue-authorized-work' : handoffRequired ? 'handoff-unfinished-authorized-work'
+                : 'preserve-progress-and-wait';
         return automatic ? { hookSpecificOutput: { hookEventName: 'PostToolUse', additionalContext: 'Work Handoff已由原生工具完成钩子记录本对话真实额度。' + JSON.stringify({ checkId: check.checkId, conversationId, state: decision.state,
-                    remaining: decision.remaining, allowHandoff: decision.allowHandoff, allowReview: decision.allowReview }) } }
+                    remaining: decision.remaining, allowWork: decision.allowWork, allowHandoff: decision.allowHandoff, allowReview: decision.allowReview,
+                    allowResume: decision.allowResume, handoffRequired, nextAction })
+                    + (handoffRequired ? '\n当前已达到交接条件；如仍有未完成的已授权任务，现在执行项目交接流程，不继续消耗工作预留。任务已结束或已取消则不新建任务。' : '') } }
             : { check, decision };
     }
     status(conversation, checkId) {

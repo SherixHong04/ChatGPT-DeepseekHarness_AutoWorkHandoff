@@ -2,7 +2,7 @@ import { positive, record, requireCondition } from './contracts.js';
 
 export interface QuotaWindow { usedPercent: number; windowDurationMins: number; resetsAt: number }
 export interface QuotaObservation {
-  schemaVersion: 1; source: 'codex-app-get-usage-limits'; observedAt: number;
+  schemaVersion: 1; source: 'codex-app-get-usage-limits' | 'codex-app-server-read'; observedAt: number;
   ordinaryUsageAllowed: boolean | null; spendControlReached: boolean | null;
   short: QuotaWindow | null; long: QuotaWindow | null;
 }

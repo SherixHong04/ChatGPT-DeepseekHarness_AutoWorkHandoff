@@ -1,6 +1,6 @@
 {
   "name": "work-handoff",
-  "version": "0.3.0-beta.2",
+  "version": "0.3.0-beta.3",
   "private": true,
   "type": "module",
   "description": "Portable Windows preview: native quota hooks, durable handoff and same-chat Harness execution",
@@ -18,14 +18,17 @@
     "file-demo": "node dist/src/cli.js file-demo",
     "setup": "node scripts/setup.mjs",
     "doctor": "node scripts/doctor.mjs",
+    "wake": "node scripts/wake.mjs",
     "verify:release": "node scripts/release.mjs"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",
+    "@types/ws": "8.18.2",
     "typescript": "^5.9.0"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.32.1",
+    "ws": "8.22.0",
     "yaml": "2.9.1"
   },
   "files": [
@@ -41,7 +44,8 @@
     "THIRD-PARTY-LICENSES.txt",
     "tsconfig.json",
     "verification/RESULTS.md",
-    "verification/install-check.json"
+    "verification/install-check.json",
+    "verification/LOCAL-WAKE.md"
   ],
   "license": "UNLICENSED"
 }

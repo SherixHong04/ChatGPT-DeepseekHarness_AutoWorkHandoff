@@ -49,6 +49,9 @@ test('native PostToolUse records actual-shaped dual windows and strips account a
   assert.equal(JSON.stringify(check).includes('do-not-store-this'), false);
   assert.equal(readFileSync(f.filename).includes(Buffer.from('do-not-store-this')), false);
   assert.equal((f.bridge.status('chat-a') as { decision: { remaining: { short: number; long: number } } }).decision.remaining.short, 29);
+  assert.match(output.hookSpecificOutput.additionalContext, /"allowWork":false/);
+  assert.match(output.hookSpecificOutput.additionalContext, /"handoffRequired":true/);
+  assert.match(output.hookSpecificOutput.additionalContext, /handoff-unfinished-authorized-work/);
 });
 
 test('foreign conversation tickets, non-native tools and tool errors cannot fulfill a check', t => {

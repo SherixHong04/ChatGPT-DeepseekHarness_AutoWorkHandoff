@@ -1,9 +1,13 @@
 import type { Packet } from './contracts.js';
-/** A native same-chat scheduler consumes this prompt; this module does not create another chat or scheduler. */
+/** Planning only. The local runner owns real wall-clock scheduling and native delivery evidence. */
 export declare function followupPlan(packet: Packet, configFile: string): {
     kind: string;
     busyRecheckMinutes: number;
     name: string;
-    prompt: string;
+    launcher: string;
+    entry: string;
+    scheduleArguments: string[];
+    needsExplicitDueTimeAndMessage: boolean;
     nativeActivationVerified: boolean;
+    prompt: string;
 };

@@ -30,7 +30,7 @@ init只在新的.local/runtime中生成独立配置，不读取其他人的账�
 
 ## 3. 审核和加载原生钩子
 
-首次安装在宿主钩子审核界面（当前CLI可用codex → /hooks）正常审核四条规则，再按宿主要求重载。安装脚本不代写审核结果。已审核且定义未变的钩子无需本程序重复提交审核。源码/配置写入不等于当前实例加载；原对话handoff_capabilities应确认0.3.0-beta.2、scope=all-conversations及taskContext.configured=true。之后新增项目或对话不需要重新安装、审核或改目录名单。
+首次安装在宿主钩子审核界面（当前CLI可用codex → /hooks）正常审核四条规则，再按宿主要求重载。安装脚本不代写审核结果。已审核且定义未变的钩子无需本程序重复提交审核。源码/配置写入不等于当前实例加载；原对话handoff_capabilities应确认与package.json一致的版本（本版0.3.0-beta.3）、scope=all-conversations及taskContext.configured=true，scheduler应为local-wall-clock-wake-preview。之后新增项目或对话不需要重新安装、审核或改目录名单。
 
 需要手动安装时：init生成mcp.staged.toml和hooks.staged.json，可审阅后只合并这些项目设置；Skill源在skills/work-handoff-loop。不要替换整个用户配置。
 
