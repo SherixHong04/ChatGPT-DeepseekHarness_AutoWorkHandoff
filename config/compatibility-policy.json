@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "checkOnNextUseAfterUpdate": true,
+  "automaticModelTest": false,
+  "automaticTestChat": false,
+  "automaticTestTimer": false,
+  "increaseQuotaQueryFrequency": false,
+  "useNextAuthorizedRealTaskForFullValidation": true,
+  "unknownExecutionMayResend": false,
+  "restoreWholeUserConfiguration": false,
+  "quietWhenHealthy": true,
+  "basicCheckDoesNotProveFullCompatibility": true
+}

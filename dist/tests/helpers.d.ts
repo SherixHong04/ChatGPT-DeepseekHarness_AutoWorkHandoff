@@ -1,0 +1,37 @@
+import type { TestContext } from 'node:test';
+import { Ledger } from '../src/ledger.js';
+import type { Command, CommandKind, Output, Packet, Receipt, Side } from '../src/contracts.js';
+export declare const baseTime: number;
+export declare function fixture(t: TestContext): {
+    root: string;
+    resources: string;
+    workRoot: string;
+    ledger: Ledger;
+    db: string;
+    packet: (taskId?: string, version?: number) => Packet;
+    input: (taskId?: string, version?: number) => {
+        taskId: string;
+        version: number;
+        requirementsVersion: number;
+        title: string;
+        objective: string;
+        requirements: string[];
+        summary: string;
+        remainingWork: string[];
+        acceptanceCriteria: string[];
+        conversationId: string;
+        resourceRoot: string;
+        workRoot: string;
+        recipients: string[];
+        deadlineAt: number;
+        files: string[];
+    };
+    publish: (taskId?: string) => import("../src/contracts.js").Task;
+    enqueue: (taskId?: string, target?: Side, kind?: CommandKind, key?: string) => Command;
+    onCleanup: (close: () => void) => void;
+    advance: (ms: number) => void;
+};
+export declare function errorCode(code: string): (error: unknown) => boolean;
+export declare function receipt(command: Command, status: Receipt['status'], sequence: number, extra?: Partial<Receipt>): Receipt;
+export declare const output: () => Output;
+export declare function succeed(ledger: Ledger, queued: Command, worker?: string): Command;

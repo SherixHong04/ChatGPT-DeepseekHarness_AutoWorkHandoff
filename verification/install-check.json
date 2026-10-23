@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "scope": "isolated directories with spaces, no real desktop profile or model",
+  "cases": [
+    "personal configuration generated",
+    "preview does not mutate settings",
+    "owned MCP and hooks installed",
+    "other settings/hooks preserved",
+    "no hook trust or timer created",
+    "no full user config backup",
+    "standard MCP handshake and managed capability",
+    "projectless fresh init defaults to all conversations",
+    "default copies stay outside the program project",
+    "edited skill blocks uninstall without partial settings removal",
+    "uninstall preserves later user edits",
+    "task databases retained",
+    "no generation or execution limits injected"
+  ],
+  "modelCalls": 0
+}

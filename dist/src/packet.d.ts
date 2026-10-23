@@ -1,0 +1,12 @@
+import type { Output, Packet, Resource } from './contracts.js';
+export declare const digest: (value: unknown) => string;
+export declare const pathKey: (value: string) => string;
+export declare function relativePath(value: unknown): string;
+export declare function checkedRoot(value: unknown): string;
+export declare function resourcePath(root: string, name: string, mustExist?: boolean): string;
+export declare function fingerprint(root: string, name: string): Resource;
+export declare function resources(value: unknown): Resource[];
+export declare function verifyResources(root: string, files: Resource[]): void;
+export declare function validatePacket(value: unknown): Packet;
+export declare function createPacket(value: unknown, now?: number): Packet;
+export declare function validateOutput(value: unknown, root: string): Output;

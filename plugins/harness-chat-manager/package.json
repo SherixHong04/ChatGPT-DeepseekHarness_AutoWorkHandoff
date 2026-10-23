@@ -1,0 +1,17 @@
+{
+  "name": "@local/work-handoff-chat-manager",
+  "version": "0.3.0-beta.1",
+  "private": true,
+  "type": "module",
+  "exports": "./index.mjs",
+  "files": [
+    "index.mjs",
+    "lib",
+    "cordis.patch.yml"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

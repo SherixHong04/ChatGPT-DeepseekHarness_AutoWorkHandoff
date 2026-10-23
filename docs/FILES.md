@@ -1,0 +1,20 @@
+# 文件组成
+
+- src/contracts、packet、ledger：合同、任务包、指令/回执、去重及真实续聊版本记录。
+- src/files：基准、副本、实体快照、备份、冲突保护及写回/恢复。
+- src/task-tools、mcp-server、tool-store：正式MCP工具、配置、额度及审批/执行记录。
+- src/quota、quota-hooks：真实窗口校验、预留准入、宿主原生事件票据和回执。
+- src/task-context：按原对话定位当前工程、相对文件/附件和无工程摘要；按任务登记来源，文件歧义一次返回候选，额度监测与文件范围分开。
+- src/harness-chats、harness-chat-plugin：新任务工作区/聊天管理及普通归档。
+- src/managed-session、managed-worker：同一正常桌面聊天的派发、状态读取、共享副本和稳定成果取回。没有单独启动新SDK会话。
+- src/harness-sdk、harness-worker、job-runner：保留的旧SDK路线及旧接口测试；新管理任务不会自动回退。
+- src/followup：生成原对话接回计划，实际调度由宿主原生工具创建。
+- src/index、cli、file-demo：导出、本地命令及无模型演示。
+- src/trial-policy：隔离的测试策略计算；不会自动变成正式设置。
+- plugins/harness-chat-manager：通用插件入口、元数据及构建产物。个性化加载配置由setup init生成。
+- skills/work-handoff-loop：通用原对话交接Skill，不含任何固定用户/任务/会话编号。
+- scripts/setup：配置生成、安装预览/应用、有限卸载；不安装账号、不写钩子信任。
+- scripts/doctor：独立无模型快检；config/compatibility-policy.json为低消耗规范。
+- scripts/release：发行白名单、个人信息/数据排除与哈希清单。
+- tests：本地模拟与流程测试，不调用付费模型。verification：本次共享版验证摘要。
+- dist与插件lib：构建生成。node_modules、.local、.local-tests和用户本机配置均不进入发行包。

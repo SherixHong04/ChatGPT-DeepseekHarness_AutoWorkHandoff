@@ -1,0 +1,27 @@
+{
+  "taskId": "replace-with-task-id",
+  "version": 1,
+  "requirementsVersion": 1,
+  "title": "Example task",
+  "objective": "Edit only the authorized sample",
+  "requirements": [
+    "Keep original meaning"
+  ],
+  "summary": "Work already completed by GPT",
+  "remainingWork": [
+    "Finish the specified change"
+  ],
+  "acceptanceCriteria": [
+    "Actual output reviewed"
+  ],
+  "conversationId": "replace-with-original-host-conversation-id",
+  "resourceRoot": "REPLACE_WITH_ABSOLUTE_AUTHORIZED_RESOURCE_ROOT",
+  "workRoot": "COPY_FROM_HANDOFF_CAPABILITIES",
+  "recipients": [
+    "work",
+    "harness"
+  ],
+  "files": [
+    "sample.txt"
+  ]
+}
