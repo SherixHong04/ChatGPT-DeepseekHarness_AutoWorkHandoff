@@ -73,7 +73,7 @@ export class QuotaHookBridge {
       '原生工具完成钩子会保存实际返回；随后调用handoff_quota_check_status核对本票据。',
       '若完成钩子未记录，可用handoff_quota_ack提交此次真实返回和查询完成的毫秒时间；这种回执与自动钩子证据分开标记。',
       '本检查不授权发送其他任务、扩大文件范围或更改系统防护；仅在已有授权任务需交接时使用项目交接流程。',
-      ...(global ? ['额度不足且当前有尚未完成的用户任务时，自动整理本对话要求并使用handoff_publish；resourceRoot/workRoot可省略，由任务上下文补齐。只列当前任务已引用的文件；无文件任务自动保存交接摘要。不要要求用户手填路径或逐条开启对话。'] : []),
+      ...(global ? ['额度达到交接阈值且当前有尚未完成的已授权任务时，先调用handoff_confirm询问用户；30秒未答自动转交，明确拒绝或取消则不转交，询问故障不能当未回答。allowed=true后才整理文件并handoff_publish；只列本任务引用文件，无文件自动保存摘要，不要求用户手填路径。'] : []),
     ].join('\n') } };
   }
   record(input: { conversationId: unknown; usage: unknown; observedAt?: unknown; checkId?: unknown; toolName?: unknown; toolUseId?: unknown }, automatic: boolean): unknown {
@@ -94,15 +94,16 @@ export class QuotaHookBridge {
         evidence: automatic ? 'hook-post-tool' : 'model-ack' };
     }, observation);
     const decision = assessQuota(observation, this.quotaPolicy, now);
+    if (decision.allowWork) this.store.noteConsentRecovery(observation.observedAt);
     const handoffRequired = decision.state === 'ready' && !decision.allowWork && decision.allowHandoff;
     const nextAction = decision.state !== 'ready' ? 'query-again-or-wait'
-      : decision.allowWork ? 'continue-authorized-work' : handoffRequired ? 'handoff-unfinished-authorized-work'
+      : decision.allowWork ? 'continue-authorized-work' : handoffRequired ? 'ask-before-handoff-unfinished-authorized-work'
         : 'preserve-progress-and-wait';
     return automatic ? { hookSpecificOutput: { hookEventName: 'PostToolUse', additionalContext:
       'Work Handoff已由原生工具完成钩子记录本对话真实额度。' + JSON.stringify({ checkId: check.checkId, conversationId, state: decision.state,
         remaining: decision.remaining, allowWork: decision.allowWork, allowHandoff: decision.allowHandoff, allowReview: decision.allowReview,
         allowResume: decision.allowResume, handoffRequired, nextAction })
-        + (handoffRequired ? '\n当前已达到交接条件；如仍有未完成的已授权任务，现在执行项目交接流程，不继续消耗工作预留。任务已结束或已取消则不新建任务。' : '') } }
+        + (handoffRequired ? '\n当前已达到交接条件；如仍有未完成的已授权任务，先调用handoff_confirm。原生询问30秒未答后允许转交，用户拒绝/取消或询问失败则保留现场。不要先打包、建聊天或派发；任务已结束或已取消则不询问或新建任务。' : '') } }
       : { check, decision };
   }
   status(conversation: unknown, checkId?: unknown): unknown {

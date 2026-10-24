@@ -53,6 +53,23 @@ test('task tools retain conversation, resource root and work root scope without 
   await assert.rejects(f.tools.call('handoff_publish', { input: { ...f.input('other-task'), workRoot: outside }, revision: null }), errorCode('WRONG_WORK_ROOT'));
   await assert.rejects(f.call('handoff_status', { unsafe: true }), errorCode('UNKNOWN_FIELD'));
 });
+
+test('threshold confirmation blocks packaging and new dispatch before the user choice; decline stays blocked', async t => {
+  const f=setup(t,{launchJob:()=>{throw Error('must not launch');}});
+  await f.tools.call('handoff_record_quota',{usage:usage(baseTime,82),observedAt:baseTime});
+  const input=f.input('pending-task');
+  await assert.rejects(f.tools.call('handoff_publish',{input,revision:null}),errorCode('HANDOFF_CONFIRMATION_REQUIRED'));
+  await assert.rejects(f.tools.call('handoff_prepare_context',{taskId:input.taskId,conversationId:input.conversationId}),errorCode('HANDOFF_CONFIRMATION_REQUIRED'));
+  const command=f.enqueue();
+  await assert.rejects(f.tools.call('handoff_dispatch',{commandId:command.id,conversationId:'original-chat'}),errorCode('HANDOFF_CONFIRMATION_REQUIRED'));
+  const args={taskId:input.taskId,conversationId:input.conversationId,title:input.title};
+  let prompts=0;const interaction={prompt:async()=>{prompts++;return 'decline' as const;}};
+  assert.equal((await f.tools.call('handoff_confirm',args,interaction) as {allowed:boolean}).allowed,false);
+  await f.tools.call('handoff_confirm',args,interaction);assert.equal(prompts,1);
+  await assert.rejects(f.tools.call('handoff_publish',{input,revision:null}),errorCode('HANDOFF_CONFIRMATION_REQUIRED'));
+  await f.tools.call('handoff_confirm',{...args,reconsider:true},{prompt:async()=> 'handoff'});
+  assert((await f.tools.call('handoff_publish',{input,revision:null}) as {task:unknown}).task);
+});
 test('async dispatch persists a unique launch intent, handles lost response and refuses plan changes', async t => {
   let launches = 0;
   const f = setup(t, { launchJob: () => { launches++; return 123; } }), command = f.enqueue();

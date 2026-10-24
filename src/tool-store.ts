@@ -8,6 +8,7 @@ import type { QuotaObservation } from './quota.js';
 import type { ChatBinding } from './harness-chats.js';
 import type { QuotaCheck } from './quota-hooks.js';
 import type { ManagedAttempt } from './managed-worker.js';
+import type { HandoffConsentRecord } from './handoff-consent.js';
 
 export interface Job {
   commandId: string; token: string; configSha256: string; plan: ExecutionPlan | null; phase: 'reserved' | 'running' | 'settled' | 'unknown';
@@ -33,7 +34,7 @@ export class ToolStore {
     } catch (error) { this.db.close(); throw error; }
   }
   close(): void { this.db.close(); }
-  get<T>(kind: 'job' | 'quota' | 'review' | 'chat' | 'quota-hook' | 'quota-ticket' | 'managed' | 'task-context', name: string): T | null {
+  get<T>(kind: 'job' | 'quota' | 'review' | 'chat' | 'quota-hook' | 'quota-ticket' | 'managed' | 'task-context' | 'handoff-consent' | 'consent-recovery', name: string): T | null {
     const row = this.db.prepare('SELECT signature,payload FROM records WHERE kind=? AND name=?').get(kind, name);
     if (!row) return null;
     const data: unknown = JSON.parse(String(row.payload));
@@ -44,6 +45,19 @@ export class ToolStore {
       .run(kind, name, digest(value), canonical(value));
   }
   quota(): QuotaObservation | null { return this.get<QuotaObservation>('quota', 'codex'); }
+  noteConsentRecovery(at: number): void {
+    const previous = this.get<{ at: number }>('consent-recovery', 'codex');
+    if (!previous || previous.at < at) this.save('consent-recovery', 'codex', { at });
+  }
+  updateConsent(key: string, update: (previous: HandoffConsentRecord | null) => HandoffConsentRecord): HandoffConsentRecord {
+    this.db.exec('BEGIN IMMEDIATE');
+    try {
+      const next = update(this.get<HandoffConsentRecord>('handoff-consent', key));
+      const previous = this.get<HandoffConsentRecord>('handoff-consent', key);
+      if (previous && previous.requestId !== next.requestId) this.save('consent-history', previous.requestId, previous);
+      this.save('handoff-consent', key, next); this.db.exec('COMMIT'); return next;
+    } catch (error) { this.db.exec('ROLLBACK'); throw error; }
+  }
   saveContext(taskId: string, value: { conversationId: string; resourceRoot: string }): void {
     this.db.exec('BEGIN IMMEDIATE');
     try {

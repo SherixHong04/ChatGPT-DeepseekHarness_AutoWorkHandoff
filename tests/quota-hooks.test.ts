@@ -16,7 +16,7 @@ function setup(t: TestContext) {
   const event = (conversationId = 'chat-a', event = 'UserPromptSubmit') => bridge.event({ conversationId, cwd: f.resources, event });
   const check = (conversationId = 'chat-a') => store.get<QuotaCheck>('quota-hook', conversationId)!;
   const usage = () => ({ ordinaryUsageAllowed: true, privateAccountLabel: 'do-not-store-this', resetCoupons: ['do-not-store-this'], rateLimitsByLimitId: {
-    codex: { spendControlReached: false, primary: { usedPercent: 71, windowDurationMins: 300, resetsAt: Math.floor(now / 1000) + 3600 },
+    codex: { spendControlReached: false, primary: { usedPercent: 81, windowDurationMins: 300, resetsAt: Math.floor(now / 1000) + 3600 },
       secondary: { usedPercent: 28, windowDurationMins: 10080, resetsAt: Math.floor(now / 1000) + 604800 } } } });
   const record = (conversationId = 'chat-a') => bridge.record({ conversationId, usage: { content: [{ type: 'text', text: JSON.stringify(usage()) }] },
     toolName: 'mcp__codex_app__get_usage_limits', toolUseId: 'fixture-native-call' }, true);
@@ -44,11 +44,11 @@ test('unrelated roots and quota-hook tools do not register or loop', t => {
 test('native PostToolUse records actual-shaped dual windows and strips account and coupon fields', t => {
   const f = setup(t); f.event(); f.advance(5); const output = f.record() as { hookSpecificOutput: { additionalContext: string } };
   const check = f.check(); assert.equal(check.phase, 'recorded'); assert.equal(check.evidence, 'hook-post-tool');
-  assert.equal(check.observation?.observedAt, f.now()); assert.equal(check.observation?.short?.usedPercent, 71);
+  assert.equal(check.observation?.observedAt, f.now()); assert.equal(check.observation?.short?.usedPercent, 81);
   assert.equal(check.observation?.long?.usedPercent, 28); assert.match(output.hookSpecificOutput.additionalContext, /chat-a/);
   assert.equal(JSON.stringify(check).includes('do-not-store-this'), false);
   assert.equal(readFileSync(f.filename).includes(Buffer.from('do-not-store-this')), false);
-  assert.equal((f.bridge.status('chat-a') as { decision: { remaining: { short: number; long: number } } }).decision.remaining.short, 29);
+  assert.equal((f.bridge.status('chat-a') as { decision: { remaining: { short: number; long: number } } }).decision.remaining.short, 19);
   assert.match(output.hookSpecificOutput.additionalContext, /"allowWork":false/);
   assert.match(output.hookSpecificOutput.additionalContext, /"handoffRequired":true/);
   assert.match(output.hookSpecificOutput.additionalContext, /handoff-unfinished-authorized-work/);

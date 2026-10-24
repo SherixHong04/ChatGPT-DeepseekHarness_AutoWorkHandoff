@@ -26,7 +26,7 @@ export interface RunHost extends HarnessChatHost {
         prompt(request: {
             sessionId: string;
             requestId: string;
-            mode: 'followup';
+            mode: 'queue';
             content: {
                 type: 'text';
                 text: string;

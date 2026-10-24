@@ -1,5 +1,5 @@
 {
-  "version": "0.3.0-beta.3",
+  "version": "0.3.0-beta.8",
   "scanned": true,
   "files": [
     {
@@ -18,6 +18,11 @@
       "sha256": "3dd0a22a26ab852830e306cd684a204181872ccc08f0e806024b69a0b837c27c"
     },
     {
+      "path": "src/desktop-question.ts",
+      "bytes": 3279,
+      "sha256": "7e124af7aa98f08edb6f19d8eaedce2c0a8e12b61abb59e7e00fcc679bcf304a"
+    },
+    {
       "path": "src/file-demo.ts",
       "bytes": 4969,
       "sha256": "66554be9cc3fbabfe9cf83d227b3e680a8ca52ce587744be784c8ecf397615e1"
@@ -31,6 +36,16 @@
       "path": "src/followup.ts",
       "bytes": 2949,
       "sha256": "cfd133a57a733866d3f60554146784b9bd544b717b1370a8a7015370c1889f45"
+    },
+    {
+      "path": "src/handoff-consent.ts",
+      "bytes": 5225,
+      "sha256": "d4ed2b6ae58c28fa2ee41f2bfcd73fa42b61ab09fcaac339a68a244ec8382dca"
+    },
+    {
+      "path": "src/handoff-question.ts",
+      "bytes": 1769,
+      "sha256": "534d062e784ffc44f8bc071ee2fb0eae39ef782178871d0f6b16479f78f91e59"
     },
     {
       "path": "src/harness-chat-plugin.ts",
@@ -79,8 +94,8 @@
     },
     {
       "path": "src/managed-session.ts",
-      "bytes": 10050,
-      "sha256": "c89f1bfab41a362626793be2362598481c6c6b4e33fa70e2c8884afd79b09bb5"
+      "bytes": 10044,
+      "sha256": "8c5cae5532ab4d4eb7ec78cbc1160cc8ea591708392fc218347433628ac1d73b"
     },
     {
       "path": "src/managed-worker.ts",
@@ -89,8 +104,8 @@
     },
     {
       "path": "src/mcp-server.ts",
-      "bytes": 1839,
-      "sha256": "8cd3b7d3323e918303dfc1d8f91df2b076f412add4b56b3faf7f4ec7aa240e5f"
+      "bytes": 1974,
+      "sha256": "12b0908286621857f4a5fa94c3d64e18b47b856e45bfa993de07fd1d4004fccf"
     },
     {
       "path": "src/native-control.ts",
@@ -104,13 +119,13 @@
     },
     {
       "path": "src/quota-hooks.ts",
-      "bytes": 10120,
-      "sha256": "ed5e340fb340587641474a8921d8b3cbdaa39246a2438d7639b6cb1308bbfac3"
+      "bytes": 10361,
+      "sha256": "ffc997cb8384c423e2c09a1e7f46bd79937035b772bc634901878978041d1e20"
     },
     {
       "path": "src/quota.ts",
-      "bytes": 6390,
-      "sha256": "756f54f7eea018758e9d84ae08c959bad3cc469d7e3be5de675879b00e8576cd"
+      "bytes": 6389,
+      "sha256": "5570fb8227662fc3df686f7cf359e9f4254eaf253cb1abd5fdbf5092fbcc8989"
     },
     {
       "path": "src/task-context.ts",
@@ -119,13 +134,13 @@
     },
     {
       "path": "src/task-tools.ts",
-      "bytes": 43925,
-      "sha256": "4c76f3b0a419861fa10f656214d8bead080deb133b917ec0c3198240b26824a8"
+      "bytes": 46832,
+      "sha256": "5c828da2aaf92f39c1026e8d4d862e2a03be007636ad35ccfb7a5f6f332b80da"
     },
     {
       "path": "src/tool-store.ts",
-      "bytes": 7168,
-      "sha256": "376e597f0d59b960ed2bc1d2a3df5a78659defb19f2908f83bd2810d16af8106"
+      "bytes": 8091,
+      "sha256": "ed57dda82e4c5a2a11ef0a8ee22f426cc758354127cde9c068a43a1bc3a1f167"
     },
     {
       "path": "src/trial-policy.ts",
@@ -153,6 +168,11 @@
       "sha256": "7676be66f98293e604bdc6e7df8bb23f3fbc5a45aa8421af7b0a5d342a88a998"
     },
     {
+      "path": "tests/desktop-question.test.ts",
+      "bytes": 2495,
+      "sha256": "c08772b518af0f74ebc066054152761cfc89e6b315dc5c8bbff831e0ffc0cfe6"
+    },
+    {
       "path": "tests/files.test.ts",
       "bytes": 25631,
       "sha256": "d474cf5c0d6c20767b3a07f922149be6c8f9cb73ca6d9d66b32ed8faf5225f79"
@@ -161,6 +181,16 @@
       "path": "tests/fixtures/harness-peer.ts",
       "bytes": 4369,
       "sha256": "4fe291767333bafc1681fefc1743dc0605e31491aff17baec294a98cfef3ec78"
+    },
+    {
+      "path": "tests/handoff-consent.test.ts",
+      "bytes": 4998,
+      "sha256": "3a4fa3f258970f19819eb9b07799301989c907c473624e7430516456c804276b"
+    },
+    {
+      "path": "tests/handoff-question.test.ts",
+      "bytes": 2417,
+      "sha256": "60cc7b598a871d9f9b66ba24d1719b612f8c272f040ce45d26e81bfd04130565"
     },
     {
       "path": "tests/harness-chats.test.ts",
@@ -189,8 +219,8 @@
     },
     {
       "path": "tests/managed-session.test.ts",
-      "bytes": 4622,
-      "sha256": "0948ca13f19abe75ef703aa52a16e421663ed139be8e89a22ba4480ca55f745b"
+      "bytes": 5277,
+      "sha256": "57691feff69c20f94ed5831ce8b181a7e61bfaaa8a719eb88014a364ce22290d"
     },
     {
       "path": "tests/managed-worker.test.ts",
@@ -205,12 +235,12 @@
     {
       "path": "tests/quota-hooks.test.ts",
       "bytes": 6820,
-      "sha256": "b3ca7055cdd6d0f3a5479f50f5850e8095adce2cbd55c02d377aa64459928277"
+      "sha256": "6f6e901cffbb10ce7986555eb69356a123cd2b0ac25757c20912a03175d41191"
     },
     {
       "path": "tests/quota.test.ts",
-      "bytes": 3536,
-      "sha256": "6ca65186a08b5ad884f704d31915d429136978d865ab52ba8ba99949e9b5762e"
+      "bytes": 4331,
+      "sha256": "97ceeeb96ccd0747d9d7301e94c7dcd27c4d43dbcac41c3c3424cebc844de798"
     },
     {
       "path": "tests/task-context.test.ts",
@@ -219,8 +249,8 @@
     },
     {
       "path": "tests/task-tools.test.ts",
-      "bytes": 18882,
-      "sha256": "c56ebff4dda864586535a8f8377ac693864c32d0d0369fb0bf0b204552d3043e"
+      "bytes": 20372,
+      "sha256": "f024480405c5ba5530e2a3b0e110a4d45eb7baaa9aaa13937907cac64967ee9c"
     },
     {
       "path": "tests/trial-policy.test.ts",
@@ -256,6 +286,21 @@
       "path": "dist/src/contracts.js.map",
       "bytes": 3119,
       "sha256": "1fd6005aee98d9b97db2f0df73d71f9ec3b108ba2a7325ec1ed5bcb22bcddab4"
+    },
+    {
+      "path": "dist/src/desktop-question.d.ts",
+      "bytes": 510,
+      "sha256": "8b9617e56ba4fe6990d75ab2da4f515d3ace7116fce7ba5170737ba456714557"
+    },
+    {
+      "path": "dist/src/desktop-question.js",
+      "bytes": 3906,
+      "sha256": "3728b7e9dab61e0184706fc2abb54afa2960a2076713cb5162fefb4e0ac6b840"
+    },
+    {
+      "path": "dist/src/desktop-question.js.map",
+      "bytes": 3812,
+      "sha256": "78d776ccd9d82c36341dccf70d66e4a9f8bdfd233d4cc789e7838deef72da223"
     },
     {
       "path": "dist/src/file-demo.d.ts",
@@ -301,6 +346,36 @@
       "path": "dist/src/followup.js.map",
       "bytes": 922,
       "sha256": "303003a3392875d592f64eb8183cb2cc1b06f7226a272bb4766b602dbbef424c"
+    },
+    {
+      "path": "dist/src/handoff-consent.d.ts",
+      "bytes": 1849,
+      "sha256": "6154d5691058d51dad7255c1d31921e4e8977850df63d9694d6894bb235d22e3"
+    },
+    {
+      "path": "dist/src/handoff-consent.js",
+      "bytes": 4435,
+      "sha256": "00206ea8e7c6f8313823e3bf3701f08229c8ddf0e3af7e49e04c90db1c6de377"
+    },
+    {
+      "path": "dist/src/handoff-consent.js.map",
+      "bytes": 4498,
+      "sha256": "b0b639c0d7fc6edaa818e9c182b3c20f5b3b70a79c1e854ce29f59666edefa99"
+    },
+    {
+      "path": "dist/src/handoff-question.d.ts",
+      "bytes": 400,
+      "sha256": "786976fa6c18e66e7edd1932b618b1984f0c016603014b3592bd3f61370aec0b"
+    },
+    {
+      "path": "dist/src/handoff-question.js",
+      "bytes": 1719,
+      "sha256": "07b419de1f300685d5890e9f71c6e8d9a5d394363a5f4152ba5cdd32c2ff25b2"
+    },
+    {
+      "path": "dist/src/handoff-question.js.map",
+      "bytes": 1409,
+      "sha256": "97d827b62ac83238ce6d13a6c9df75e26d59d000c3502c3329f728735d29e1f9"
     },
     {
       "path": "dist/src/harness-chat-plugin.d.ts",
@@ -439,18 +514,18 @@
     },
     {
       "path": "dist/src/managed-session.d.ts",
-      "bytes": 1536,
-      "sha256": "497cb4cddb6ee1f43c9fccf683caf559b551e56861b5f12baa016dd04e2bb56b"
+      "bytes": 1533,
+      "sha256": "a5017d830fc211de1af69acd805e46c3ca1dcf7283b83c367aef3cd096d878ad"
     },
     {
       "path": "dist/src/managed-session.js",
-      "bytes": 9478,
-      "sha256": "c1bedf41531796d2188232cd41a03b83ec51fd34207a631bd014172aa9421e83"
+      "bytes": 9475,
+      "sha256": "ecc2f35a75068accfde0d058dc4634aaf4fc265fbe9462b68ce8a14d389c21d7"
     },
     {
       "path": "dist/src/managed-session.js.map",
       "bytes": 9047,
-      "sha256": "c52097b7138c341188e1949db481fec0303905d093ada59539c7af00cf02647e"
+      "sha256": "1fd47d74d73718ada7bb05fa61d985cf00bda5b2183e7606bd0f362c2b5439ed"
     },
     {
       "path": "dist/src/managed-worker.d.ts",
@@ -474,13 +549,13 @@
     },
     {
       "path": "dist/src/mcp-server.js",
-      "bytes": 1932,
-      "sha256": "4771350be90d20f886b5b505521bd3a15327e95d84570c6ddd799774b8f71d59"
+      "bytes": 2059,
+      "sha256": "644986228c0996faa8eb6fe8a645f936574eed34e19759fc728bea72c169d55e"
     },
     {
       "path": "dist/src/mcp-server.js.map",
-      "bytes": 1842,
-      "sha256": "176ce495de3826a6a39eb60664056ba21715e1a5ac328b99813e78d8032c7e89"
+      "bytes": 1965,
+      "sha256": "96743845584379c48a840dce7062fd019c51c4266ffb60f0983c7568412f3eec"
     },
     {
       "path": "dist/src/native-control.d.ts",
@@ -519,13 +594,13 @@
     },
     {
       "path": "dist/src/quota-hooks.js",
-      "bytes": 9812,
-      "sha256": "ceb8a48bf19ea7f3f27748599b5799f5ef6693265f614317d834d57b6c12bd9d"
+      "bytes": 10069,
+      "sha256": "02d50732eefa4d56994ee6c1f63e4e3733fd1ae1deaf085755b3b90c1da717dc"
     },
     {
       "path": "dist/src/quota-hooks.js.map",
-      "bytes": 7733,
-      "sha256": "ba976b0e4c364e6cce830fc8e2ccb05f43a50df9d490dfae2e57d83bb08e409a"
+      "bytes": 7821,
+      "sha256": "a9f448ec155a3686b0d4adc195c563c2c2ff680271e666623b8d198c875a220c"
     },
     {
       "path": "dist/src/quota.d.ts",
@@ -534,13 +609,13 @@
     },
     {
       "path": "dist/src/quota.js",
-      "bytes": 5411,
-      "sha256": "5dae099727aac3eb9b927c4a80ede2d723285cc339ea677d28a40ed1592fa117"
+      "bytes": 5410,
+      "sha256": "0c65f4ae541f08ef65661f2a34cc17592d61ada8807610058336289e57cdb7c9"
     },
     {
       "path": "dist/src/quota.js.map",
       "bytes": 5366,
-      "sha256": "ceb35ab8658d578d1ad7cc6363ff83a3efb9afb7653c1a53407121c6b72352f2"
+      "sha256": "3048e145ceb71b9281fb9461c288bdb7575bd92c0ca0ec20442c440502fda632"
     },
     {
       "path": "dist/src/task-context.d.ts",
@@ -559,33 +634,33 @@
     },
     {
       "path": "dist/src/task-tools.d.ts",
-      "bytes": 2361,
-      "sha256": "ac3515cf27c39ef55e98ba793755b1fb73ff95d6cbf79a5109c4c131e8c7b77f"
+      "bytes": 2504,
+      "sha256": "c289bb783e998fe43e8bf980d79be9f2a5588db5f3f906986de2dd3035afb650"
     },
     {
       "path": "dist/src/task-tools.js",
-      "bytes": 45312,
-      "sha256": "b49b4b3e5d3a85d319164fcca4d96d012d6bf7de80152d1fb48ba664eb2aee7d"
+      "bytes": 48408,
+      "sha256": "1bec5adcbd7ada886b8d0cc4840b54b5ce2437014d54e084e1449a36a9ca46b5"
     },
     {
       "path": "dist/src/task-tools.js.map",
-      "bytes": 41924,
-      "sha256": "23135049910e771c094253794f5823cb81aea232cf9111b8111fe9991f7c5089"
+      "bytes": 44784,
+      "sha256": "b1e799b04f8dfc4eeacc308704fd441be81e183c84fa4c2b5a0f34779b5d49ae"
     },
     {
       "path": "dist/src/tool-store.d.ts",
-      "bytes": 1568,
-      "sha256": "f1f3536995a462ec9b934f656b87405326b660363d9946e2f4abd212a90d4c56"
+      "bytes": 1845,
+      "sha256": "829e096fc9f4071e1cfea2f25a2464102d32307717a9450be1701a7495f619fd"
     },
     {
       "path": "dist/src/tool-store.js",
-      "bytes": 6610,
-      "sha256": "4db53b22bd81238747c8819891f4efb650d81a6aa0af5bceaefe4d360d4bc4ad"
+      "bytes": 7401,
+      "sha256": "dea43797c5a2a4cdc18f9c2ef5cba29dbe79e14b85bc0c04116f5fc8bf61576e"
     },
     {
       "path": "dist/src/tool-store.js.map",
-      "bytes": 6345,
-      "sha256": "27a5a8510e0c05ffda84cb17c1bc74c1cfc2102c61806d09a6e69eb9ed39d365"
+      "bytes": 7211,
+      "sha256": "23ff5350377ac9202ca1ee269a61e9416ae31d0aa14fbb3ac488d46ecf596321"
     },
     {
       "path": "dist/src/trial-policy.d.ts",
@@ -648,6 +723,21 @@
       "sha256": "3780195226fded7f334873e9e2485ac984d6c878eafb697a7fc7c0cc5aeee295"
     },
     {
+      "path": "dist/tests/desktop-question.test.d.ts",
+      "bytes": 11,
+      "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+    },
+    {
+      "path": "dist/tests/desktop-question.test.js",
+      "bytes": 2603,
+      "sha256": "0fe6fabd4243ee4d51d0f00563abad96c5ec4460a94a21798ea0a50bf4fec994"
+    },
+    {
+      "path": "dist/tests/desktop-question.test.js.map",
+      "bytes": 3040,
+      "sha256": "be87417076152d52ac2661ecb395ff37f678859ac1bc95b24083a6222aefe5bb"
+    },
+    {
       "path": "dist/tests/files.test.d.ts",
       "bytes": 11,
       "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
@@ -676,6 +766,36 @@
       "path": "dist/tests/fixtures/harness-peer.js.map",
       "bytes": 5401,
       "sha256": "d62b0afa27491e43a6f8f000f3866c49affe5b087c9f9ed615297da292d8f5ae"
+    },
+    {
+      "path": "dist/tests/handoff-consent.test.d.ts",
+      "bytes": 11,
+      "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+    },
+    {
+      "path": "dist/tests/handoff-consent.test.js",
+      "bytes": 5574,
+      "sha256": "2dff880f643f9430caf7bf86ba62d445d74caf1054f21171db76b97d07a45453"
+    },
+    {
+      "path": "dist/tests/handoff-consent.test.js.map",
+      "bytes": 7405,
+      "sha256": "b9f6bf02eb2d0d7d04fef5256f6f2b4bf668a284c125f2e0b2524bdcc7609e9b"
+    },
+    {
+      "path": "dist/tests/handoff-question.test.d.ts",
+      "bytes": 11,
+      "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+    },
+    {
+      "path": "dist/tests/handoff-question.test.js",
+      "bytes": 2586,
+      "sha256": "463e7d44c62a4207e4144fd6ff14cfb749d5fbc76d08761e8e482b9b6bf94d5b"
+    },
+    {
+      "path": "dist/tests/handoff-question.test.js.map",
+      "bytes": 2972,
+      "sha256": "6a07934b3ed28d55bda75f76604e8b33e96e770a3c8ad081eb52a085af9881ca"
     },
     {
       "path": "dist/tests/harness-chats.test.d.ts",
@@ -759,13 +879,13 @@
     },
     {
       "path": "dist/tests/managed-session.test.js",
-      "bytes": 4714,
-      "sha256": "21fc3a6d9b3a00c8d9d97a349838e2ee1d4322321774d2355eadc793e6ec1f91"
+      "bytes": 5458,
+      "sha256": "943c8b5f42518e32e311f464e9e09bab68fa3a3e772bbe1ff79b58c9cbd894be"
     },
     {
       "path": "dist/tests/managed-session.test.js.map",
-      "bytes": 5967,
-      "sha256": "175195b055b889c306a4459c7c48045657c1b9f7fdb71153002a78fe17801e0b"
+      "bytes": 6537,
+      "sha256": "cbc9f07c01b39bb3783fb021f56865b1ff762c9d927fc9053493bc17ebd0b504"
     },
     {
       "path": "dist/tests/managed-worker.test.d.ts",
@@ -805,7 +925,7 @@
     {
       "path": "dist/tests/quota-hooks.test.js",
       "bytes": 6756,
-      "sha256": "aead5a4ce409deab0f2e3549e07eb8394ef5ba2d2605891e41f88bdcd2a32301"
+      "sha256": "566d85469da9e71fda94c8acbe62dbbb0f0ec9a27992f6f5766f978d38e0d3c0"
     },
     {
       "path": "dist/tests/quota-hooks.test.js.map",
@@ -819,13 +939,13 @@
     },
     {
       "path": "dist/tests/quota.test.js",
-      "bytes": 3771,
-      "sha256": "26605c269c272ee294cf0a4e64919dc25eac1fb8479d9f4de76ae2f1d79a38e6"
+      "bytes": 4624,
+      "sha256": "5780af833e643bf49f3cd8efdcf8e1c759d8274fca4479367d3c8bb93e8fb2de"
     },
     {
       "path": "dist/tests/quota.test.js.map",
-      "bytes": 4209,
-      "sha256": "aab9d0019deded247a61060feafcb89fa720de0bb30a596e86c8b5b4a1de13d2"
+      "bytes": 5198,
+      "sha256": "b1d6d6c0bc266a26b4da94fe8061ffadd33a39f700bfcf3566445838e1fa00e1"
     },
     {
       "path": "dist/tests/task-context.test.d.ts",
@@ -849,13 +969,13 @@
     },
     {
       "path": "dist/tests/task-tools.test.js",
-      "bytes": 18640,
-      "sha256": "77d472be22b21faaa53309495556bb856e436b6022873053d42bec0b17944625"
+      "bytes": 20212,
+      "sha256": "887df9a559686707e5b18efc9731938171edbadc0fb4e0dc73b091018fa84e8d"
     },
     {
       "path": "dist/tests/task-tools.test.js.map",
-      "bytes": 22395,
-      "sha256": "7bd39742ee5272ddd47e2e7432ffc49000d15131b48c31194591e4e556b356c5"
+      "bytes": 24293,
+      "sha256": "c71e15dfed6313dd0e4e861b03796f5a81f918ab152558bf2e4bb61b1ef74755"
     },
     {
       "path": "dist/tests/trial-policy.test.d.ts",
@@ -876,6 +996,16 @@
       "path": "scripts/build-plugin.mjs",
       "bytes": 545,
       "sha256": "2d667bc5698c6ce6def9dfd0cb0a2b466d15aa173da70490635b834b6d97246d"
+    },
+    {
+      "path": "scripts/desktop-question.ps1",
+      "bytes": 9496,
+      "sha256": "73ad09ecdd52642ec70bcd25bba7096753fa72a2d1aa207a1da7de2f1309eb4f"
+    },
+    {
+      "path": "scripts/desktop-question.xaml",
+      "bytes": 7333,
+      "sha256": "3360f0cc5b3109f6cb0c1c90748fce69b3f383e2e4e65382a28d74a7b0b1b747"
     },
     {
       "path": "scripts/doctor.mjs",
@@ -909,13 +1039,13 @@
     },
     {
       "path": "skills/work-handoff-loop/SKILL.md",
-      "bytes": 5290,
-      "sha256": "1b3a3d5ef07fa58005352f483b56ba344b97483dfff4475a1c811b412e9975d7"
+      "bytes": 6579,
+      "sha256": "7c6a9a17e9ba5bb404b65e98b6b6cd503784e0e7ec5b35c7834b40fb940d4e56"
     },
     {
       "path": "skills/work-handoff-loop/references/guide.md",
-      "bytes": 3816,
-      "sha256": "9c455d09de67044cbd3f62f6f213cbfeb8c1ee4cc5a6def878d80c2e24c4039d"
+      "bytes": 5558,
+      "sha256": "fcf6cf9e95bb9e71a0cd2f196cd54e729cfb35d155edc9616cf6efe2de523297"
     },
     {
       "path": "plugins/harness-chat-manager/index.mjs",
@@ -939,8 +1069,8 @@
     },
     {
       "path": "plugins/harness-chat-manager/lib/managed-session.js",
-      "bytes": 9478,
-      "sha256": "c1bedf41531796d2188232cd41a03b83ec51fd34207a631bd014172aa9421e83"
+      "bytes": 9475,
+      "sha256": "ecc2f35a75068accfde0d058dc4634aaf4fc265fbe9462b68ce8a14d389c21d7"
     },
     {
       "path": "plugins/harness-chat-manager/lib/packet.js",
@@ -958,9 +1088,19 @@
       "sha256": "da525e2ee3d0394604e47fab9401cb3d3f9dac189a6c8296e56bb734005fe6d0"
     },
     {
+      "path": "docs/COMPATIBILITY-20261024.md",
+      "bytes": 3024,
+      "sha256": "18498bc674a35290cde1e189bff8e066dce8c2393f29fd7f11ee0be2303f03b2"
+    },
+    {
       "path": "docs/FILES.md",
       "bytes": 2298,
       "sha256": "95271e8e38e9d988fad05786041d7b51cf221e7e07e6c144903adfda3d8fa592"
+    },
+    {
+      "path": "docs/HANDOFF-CONFIRMATION.md",
+      "bytes": 4570,
+      "sha256": "d3c3727a3d63644f4c17de1d89e80bcccf61b5c95cc8dfc4bee4cfe892595de5"
     },
     {
       "path": "docs/INSTALL.md",
@@ -995,12 +1135,12 @@
     {
       "path": "package.json",
       "bytes": 1330,
-      "sha256": "15b824794428e03e6d9b10944c738d94ac1f851d23cccfcc6e343c44975887f1"
+      "sha256": "a1fec953b9374d8ada9ff8b96b4e035f8043065bfcea687a2709618b257d6c53"
     },
     {
       "path": "package-lock.json",
       "bytes": 45781,
-      "sha256": "84f8e83be2dba62a4ce0c759dee185f227e21f19ee4035554af9718b41ea9273"
+      "sha256": "34f8b5686d945622aa10dae4f8dac21f5f6bf3a250d735c852da22973e4836e9"
     },
     {
       "path": "tsconfig.json",
@@ -1014,8 +1154,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 2749,
-      "sha256": "1e891b8493e4399c60f3e509693fbcd35b4dec6cec09244259c4d49c38021b47"
+      "bytes": 3594,
+      "sha256": "1d0441d41fd016db89ea8eeb680018860bda39adfd5018a9e3921f9b8337be9d"
     },
     {
       "path": "THIRD-PARTY-LICENSES.txt",
@@ -1024,8 +1164,8 @@
     },
     {
       "path": "verification/RESULTS.md",
-      "bytes": 4639,
-      "sha256": "2dc2b8ce62d82478cb92eb85fea17695c67047477ba24434b39e7e9f62be183f"
+      "bytes": 8452,
+      "sha256": "d2ff78b1c6d26799cc3ac9e6cebd77e00d1926e83a5dbd706410366cc92a4c04"
     },
     {
       "path": "verification/install-check.json",
@@ -1036,6 +1176,11 @@
       "path": "verification/LOCAL-WAKE.md",
       "bytes": 2369,
       "sha256": "8ac23dd2807b80fdf33fd8d8a28115e94fd95f5432201f36375fa24258dd7e18"
+    },
+    {
+      "path": "docs/RELEASE-0.3.0-beta.8.md",
+      "bytes": 3087,
+      "sha256": "ef8eb2d651d5e8a4a7e8e42892743530e9f4b208c0526da73ebaca552c79158f"
     }
   ],
   "excludesRuntimeAndAccounts": true,

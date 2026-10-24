@@ -41,7 +41,7 @@ export class ManagedSession {
             writeFileSync(filename, canonical(run) + '\n', { flag: 'wx' });
             try {
                 const result = await this.host.sessionController.prompt({ sessionId: input.binding.sessionId,
-                    requestId: input.commandId, mode: 'followup', content: [{ type: 'text', text: input.prompt }] }, new AbortController().signal);
+                    requestId: input.commandId, mode: 'queue', content: [{ type: 'text', text: input.prompt }] }, new AbortController().signal);
                 requireCondition(result.accepted, 'RUN_NOT_ACCEPTED', '宿主未确认接收。');
                 run.phase = 'accepted';
                 run.acceptedAt = Date.now();
