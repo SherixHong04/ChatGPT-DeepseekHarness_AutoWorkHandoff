@@ -7,6 +7,7 @@ import type { ChatPolicy, ChatPort } from './harness-chats.js';
 import type { QuotaHookPolicy } from './quota-hooks.js';
 import type { ManagedPort } from './managed-worker.js';
 import type { TaskContextPolicy } from './task-context.js';
+import type { HandoffPrompt } from './handoff-consent.js';
 export interface ToolsConfig {
     schemaVersion: 1;
     db: string;
@@ -54,7 +55,10 @@ export declare class TaskTools {
     private approved;
     private launch;
     /** Tool annotations aid the host UI; every tool still checks its own records and file scope. */
-    call(name: string, value: unknown): Promise<unknown>;
+    call(name: string, value: unknown, interaction?: {
+        prompt: HandoffPrompt;
+        signal?: AbortSignal;
+    }): Promise<unknown>;
 }
 type Schema = Record<string, unknown>;
 export declare const toolDefinitions: {

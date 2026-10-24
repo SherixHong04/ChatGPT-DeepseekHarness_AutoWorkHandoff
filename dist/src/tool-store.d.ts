@@ -3,6 +3,7 @@ import type { QuotaObservation } from './quota.js';
 import type { ChatBinding } from './harness-chats.js';
 import type { QuotaCheck } from './quota-hooks.js';
 import type { ManagedAttempt } from './managed-worker.js';
+import type { HandoffConsentRecord } from './handoff-consent.js';
 export interface Job {
     commandId: string;
     token: string;
@@ -18,9 +19,11 @@ export declare class ToolStore {
     private readonly db;
     constructor(filename: string);
     close(): void;
-    get<T>(kind: 'job' | 'quota' | 'review' | 'chat' | 'quota-hook' | 'quota-ticket' | 'managed' | 'task-context', name: string): T | null;
+    get<T>(kind: 'job' | 'quota' | 'review' | 'chat' | 'quota-hook' | 'quota-ticket' | 'managed' | 'task-context' | 'handoff-consent' | 'consent-recovery', name: string): T | null;
     private save;
     quota(): QuotaObservation | null;
+    noteConsentRecovery(at: number): void;
+    updateConsent(key: string, update: (previous: HandoffConsentRecord | null) => HandoffConsentRecord): HandoffConsentRecord;
     saveContext(taskId: string, value: {
         conversationId: string;
         resourceRoot: string;

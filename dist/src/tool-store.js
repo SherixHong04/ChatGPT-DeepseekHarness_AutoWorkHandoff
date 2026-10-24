@@ -40,6 +40,24 @@ export class ToolStore {
             .run(kind, name, digest(value), canonical(value));
     }
     quota() { return this.get('quota', 'codex'); }
+    noteConsentRecovery(at) {
+        const previous = this.get('consent-recovery', 'codex');
+        if (!previous || previous.at < at)
+            this.save('consent-recovery', 'codex', { at });
+    }
+    updateConsent(key, update) {
+        this.db.exec('BEGIN IMMEDIATE');
+        try {
+            const next = update(this.get('handoff-consent', key));
+            this.save('handoff-consent', key, next);
+            this.db.exec('COMMIT');
+            return next;
+        }
+        catch (error) {
+            this.db.exec('ROLLBACK');
+            throw error;
+        }
+    }
     saveContext(taskId, value) {
         this.db.exec('BEGIN IMMEDIATE');
         try {

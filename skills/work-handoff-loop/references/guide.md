@@ -6,7 +6,9 @@ publish的input仍由GPT提供taskId、conversationId、title、objective、requ
 
 运行条件：Windows、Node.js 24+、支持原生MCP钩子/真实额度工具/原对话调度的本地GPT宿主，以及已正常登录的DeepSeek Harness桌面。CLI、桌面与模型版本不是同一版本，不互相推断。
 
-工具次序：capabilities/status → 原生get_usage_limits、实际quota记录、next → publish → chat_prepare → chat_status → enqueue（side=harness，kind=execute/rework）→ dispatch（plan.outputs和deletions）→ managed_inspect → managed_collect → 独立验收 → review → prepare_commit → apply_commit → complete。work侧使用work_begin/work_finish，只改返回的副本。每次操作使用最新revision。
+工具次序：capabilities/status → 原生get_usage_limits、实际quota记录、next → 达到阈值时handoff_confirm（allowed=true）→ publish → chat_prepare → chat_status → enqueue（side=harness，kind=execute/rework）→ dispatch（plan.outputs和deletions）→ managed_inspect → managed_collect → 独立验收 → review → prepare_commit → apply_commit → complete。work侧使用work_begin/work_finish，只改返回的副本。每次操作使用最新revision。
+
+beta.4新增原生MCP form转交前询问，固定30秒未答默认转交；明确拒绝/取消、询问故障及原轮次中断不会默认放行。确认绑定任务及原对话并持久保存，并发或重启不重复弹窗、不会仅凭过期等待记录自动批准。拒绝在本次低额度阶段保持；用户明确要求再选时reconsider=true，实际恢复工作额度后重新触发阈值可再问。publish、资料准备、聊天创建及新派发在阈值状态下检查确认记录；MCP连接须支持form elicitation。文件更新后常驻工具需正常重载，capabilities.handoffConfirmation应显示enabled=true、timeoutMs=30000及supportedByCurrentClient=true。新增本地/标准MCP测试不等于真实桌面弹窗验收。
 
 默认额度预留来自config的quotaPolicy：workPercent20、handoffPercent5、reviewPercent10、resumePercent40；继续需至少35，派发至少15，验收至少10，恢复至少40，两窗口均必须实际有效。它们是保守准入，不是任务消耗的精确预测，也不是本次90%触发测试参数。用户可在本机配置调整预留，调整后须覆盖自测。需要明确百分比触发时在当前已授权任务中明示规则，不能改用估算余额。
 
