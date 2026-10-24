@@ -1,5 +1,7 @@
 # 使用与兼容规则
 
+beta.6是可见窗口修正版。beta.5曾误将交互窗口以windowsHide=true启动，造成用户只听到提示音，不能把旧visibleMs遥测计为显示通过。交互窗口必须windowsHide=false，并核对IsWindowVisible、最小化、DWM cloak和WindowFromPoint；只在当前可交互且窗口中心可见时累计30秒。用户实际点击的decline和自动timeout证据分开保存。
+
 beta.5替换beta.4默认询问通道：protocol=windows-desktop，独立Windows置顶窗口与当前选中对话无关，不依赖MCP表单审批。先正常加载新版；不能把旧MCP form立即返回视为用户拒绝。实际显示后计30秒，锁屏/安全桌面/断开会话不计时，55秒内无法可靠完成则不可用且不默许；无交互桌面或执行策略限制要明确报告。完全退出GPT及无运行任务时没有新的阈值触发事件，不宣称支持后台常驻监控或安全桌面显示。
 
 0.3.0-beta.2默认quotaHooks.scope=all-conversations，与resourceRoots解耦。taskContext.root保存无工程任务摘要。新工程按每个任务自动登记到工具账本，不写全局目录名单或要求重启。旧配置没有scope时仍保留原范围，需用明确迁移启用。

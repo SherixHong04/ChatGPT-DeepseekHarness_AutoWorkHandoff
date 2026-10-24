@@ -1,5 +1,5 @@
 {
-  "version": "0.3.0-beta.5",
+  "version": "0.3.0-beta.6",
   "scanned": true,
   "files": [
     {
@@ -19,8 +19,8 @@
     },
     {
       "path": "src/desktop-question.ts",
-      "bytes": 3155,
-      "sha256": "878497d699f4302cbfd82fe026d5a6efc4c180e2e86019c45f63590d435866f0"
+      "bytes": 3279,
+      "sha256": "7e124af7aa98f08edb6f19d8eaedce2c0a8e12b61abb59e7e00fcc679bcf304a"
     },
     {
       "path": "src/file-demo.ts",
@@ -105,7 +105,7 @@
     {
       "path": "src/mcp-server.ts",
       "bytes": 1974,
-      "sha256": "248535f3d92afcceb41f3a3cea215001d3d8ec8e91555f50b695fbf17eb6f044"
+      "sha256": "f34237764bc1b162e3b97400dcc200e8261cdbae5ca868f8ddb3325b6f55bff8"
     },
     {
       "path": "src/native-control.ts",
@@ -135,7 +135,7 @@
     {
       "path": "src/task-tools.ts",
       "bytes": 46832,
-      "sha256": "4468ea44372ec199b552c73a279958968bbb6e8dafc95b50897c0ee1ebbdf62a"
+      "sha256": "21fbb6d9c7e4a3c7e504ff7ae543acd80ae6ac913dfa78e162cc870b0c99ef23"
     },
     {
       "path": "src/tool-store.ts",
@@ -169,8 +169,8 @@
     },
     {
       "path": "tests/desktop-question.test.ts",
-      "bytes": 920,
-      "sha256": "69cb908e3efdcd206c121eb282e79b6f69d39bd1915e921697b9c95607132e4d"
+      "bytes": 2495,
+      "sha256": "c08772b518af0f74ebc066054152761cfc89e6b315dc5c8bbff831e0ffc0cfe6"
     },
     {
       "path": "tests/files.test.ts",
@@ -289,18 +289,18 @@
     },
     {
       "path": "dist/src/desktop-question.d.ts",
-      "bytes": 443,
-      "sha256": "5bbfa05d3684624998fbe8491a00ccaee50f3f11bdb192d6fa690201512d6a97"
+      "bytes": 510,
+      "sha256": "8b9617e56ba4fe6990d75ab2da4f515d3ace7116fce7ba5170737ba456714557"
     },
     {
       "path": "dist/src/desktop-question.js",
-      "bytes": 3779,
-      "sha256": "97aaf5c3eac671979e12b44d0ae785c0da10aa6aedd37030eec593c7f48e6b27"
+      "bytes": 3906,
+      "sha256": "3728b7e9dab61e0184706fc2abb54afa2960a2076713cb5162fefb4e0ac6b840"
     },
     {
       "path": "dist/src/desktop-question.js.map",
-      "bytes": 3783,
-      "sha256": "efa8f7bc7542396154d3fab2b299460aee3926088bc335531cdda86a0b0f628d"
+      "bytes": 3812,
+      "sha256": "78d776ccd9d82c36341dccf70d66e4a9f8bdfd233d4cc789e7838deef72da223"
     },
     {
       "path": "dist/src/file-demo.d.ts",
@@ -550,7 +550,7 @@
     {
       "path": "dist/src/mcp-server.js",
       "bytes": 2059,
-      "sha256": "37f0c8d730790196ad3f65c0a9058eaf8ea205f4a8fe114dd05d6b2793698bb9"
+      "sha256": "60892fbdc462a8ebc22021a7901f69957b0d61d20c4c2fe459057c7e0dfb4bd1"
     },
     {
       "path": "dist/src/mcp-server.js.map",
@@ -640,7 +640,7 @@
     {
       "path": "dist/src/task-tools.js",
       "bytes": 48408,
-      "sha256": "33ea3aae06ea7bba83b0753d3dfaadb6fb9b1f2c4bbea9435ced6679f9f3a00a"
+      "sha256": "fe6cb654f0e7390e2db5a2cdcfb7bdf0c275bdd6c9614329a77f31a50e167f06"
     },
     {
       "path": "dist/src/task-tools.js.map",
@@ -729,13 +729,13 @@
     },
     {
       "path": "dist/tests/desktop-question.test.js",
-      "bytes": 955,
-      "sha256": "b3805f903dd0b69a18c37b6ef94d48e9a42b049cfdf35a86e1bb36159206e02d"
+      "bytes": 2603,
+      "sha256": "0fe6fabd4243ee4d51d0f00563abad96c5ec4460a94a21798ea0a50bf4fec994"
     },
     {
       "path": "dist/tests/desktop-question.test.js.map",
-      "bytes": 1199,
-      "sha256": "2f23181439e0f8c672e68d2da626739ffa305776399157cf0d7015d9ad79e645"
+      "bytes": 3040,
+      "sha256": "be87417076152d52ac2661ecb395ff37f678859ac1bc95b24083a6222aefe5bb"
     },
     {
       "path": "dist/tests/files.test.d.ts",
@@ -999,8 +999,8 @@
     },
     {
       "path": "scripts/desktop-question.ps1",
-      "bytes": 4740,
-      "sha256": "71b6326b317ee0f0c9bc651964264cf56c4f3f2d6916bc5bba96bb16f362807b"
+      "bytes": 7243,
+      "sha256": "cf3f9f8b01b3f4a339b64185349493ef5139e602bcab895fd4770cf09f2eefd9"
     },
     {
       "path": "scripts/doctor.mjs",
@@ -1034,13 +1034,13 @@
     },
     {
       "path": "skills/work-handoff-loop/SKILL.md",
-      "bytes": 6455,
-      "sha256": "8dad888bcb10ced6955a16efa38ee5c5a3d44a775a309bff59b0966dcf8fa889"
+      "bytes": 6579,
+      "sha256": "7c6a9a17e9ba5bb404b65e98b6b6cd503784e0e7ec5b35c7834b40fb940d4e56"
     },
     {
       "path": "skills/work-handoff-loop/references/guide.md",
-      "bytes": 5156,
-      "sha256": "b8ee8804414638035d02d46712df06f89b92d31c5c93927ed1a9b48649afd5f0"
+      "bytes": 5558,
+      "sha256": "fcf6cf9e95bb9e71a0cd2f196cd54e729cfb35d155edc9616cf6efe2de523297"
     },
     {
       "path": "plugins/harness-chat-manager/index.mjs",
@@ -1094,8 +1094,8 @@
     },
     {
       "path": "docs/HANDOFF-CONFIRMATION.md",
-      "bytes": 2688,
-      "sha256": "23c2efeeb19aa2d352f9e694dcaa8c6cb80ef98b78362ca4cc81d62eba029d29"
+      "bytes": 3177,
+      "sha256": "bbf36c305fd5ba910cfaa9ff6001ad51b4705b36bcf718a0f276b7846da7f875"
     },
     {
       "path": "docs/INSTALL.md",
@@ -1130,12 +1130,12 @@
     {
       "path": "package.json",
       "bytes": 1330,
-      "sha256": "55b988332b2b362f523d2094f526b0e8e08ab40c186b3999b03844799f2b44ac"
+      "sha256": "686465eb3e0b7488abadacbc6d2e2ec3ab1095f6bcdd1d3d3fbb3917631cb14f"
     },
     {
       "path": "package-lock.json",
       "bytes": 45781,
-      "sha256": "510003c42e5bb70aa739a8c5ac7f0ee16b9e5308dea7609b750d724489364dc5"
+      "sha256": "11b0a2c04c5c4708920e60811a4c19b9db44cb13c9c3b2bbe77298b0cd276bae"
     },
     {
       "path": "tsconfig.json",
@@ -1159,8 +1159,8 @@
     },
     {
       "path": "verification/RESULTS.md",
-      "bytes": 6402,
-      "sha256": "fefc7e222bb2db2259167603176797e39ac11c85fb2a3686317b4d736b30ef28"
+      "bytes": 6903,
+      "sha256": "50645301374d5846f6d050c32ebc3749d218855f6597cf5e6455d1dc55026ba5"
     },
     {
       "path": "verification/install-check.json",

@@ -1,4 +1,6 @@
-# 转交前选择（beta.5）
+# 转交前选择（beta.6）
+
+beta.6修正beta.5的隐藏启动：windowsHide=true会给交互窗体继承SW_HIDE；Shown事件、提示音及Form.Visible不能证明屏幕可见。现在使用可见启动并检查IsWindowVisible、IsIconic、DWM cloak及WindowFromPoint，窗口中心被遮挡或位于非当前虚拟桌面时暂停计时。用户已实际看到修补窗口并点击暂不转交，程序收到decline；无操作测试在约30秒可见计时后收到timeout。相关测试不会转交真实任务。
 
 真实额度触发原有阈值且有未完成的已授权任务时，GPT先调用handoff_confirm。Windows独立置顶窗口显示任务名称与“立即转交/暂不转交”，并说明30秒未回答会自动开始。它属于本工具的桌面界面，不走MCP审批询问，不修改never或其他审批、安全设置。点击立即转交会立即放行；点击暂不转交或关闭窗口后本次不会打包、建立Harness聊天或派发。
 

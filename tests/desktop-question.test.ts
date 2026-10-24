@@ -2,6 +2,9 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {validDesktopReply} from '../src/desktop-question.js';
 import type {HandoffConsentRecord} from '../src/handoff-consent.js';
+import {desktopHandoffPrompt} from '../src/desktop-question.js';
+import {EventEmitter} from 'node:events';
+import type {spawn} from 'node:child_process';
 test('desktop timeout needs an actually shown matching window and 30 seconds of interactive display',()=>{
   const offer={requestId:'owned'} as HandoffConsentRecord;
   const row={requestId:'owned',kind:'answer',answer:'timeout',shownAt:1000,visibleMs:30_000};
@@ -12,4 +15,26 @@ test('desktop timeout needs an actually shown matching window and 30 seconds of 
   assert(!validDesktopReply({...row,shownAt:2000},offer,1000));
   assert(validDesktopReply({...row,answer:'decline',visibleMs:0},offer,1000));
   assert(validDesktopReply({...row,answer:'cancelled',visibleMs:0},offer,1000));
+});
+
+test('the interactive desktop helper cannot inherit SW_HIDE and carries UTF-8 choices through its actual adapter', {skip:process.platform!=='win32'},async()=>{
+  const child=new EventEmitter() as any;
+  child.stdout=new EventEmitter();child.stderr=new EventEmitter();child.stdin=new EventEmitter();
+  child.kill=()=>{child.emit('close',0);return true;};
+  child.stdin.end=(data?:string)=>{
+    if(!data)return;
+    assert(data.endsWith('\n'));
+    const request=JSON.parse(data);assert.equal(request.title,'中文桌面测试');
+    setImmediate(()=>{
+      child.stdout.emit('data',Buffer.from(JSON.stringify({kind:'shown',requestId:request.requestId,shownAt:1000,interactive:true})+'\n'
+        +JSON.stringify({kind:'answer',requestId:request.requestId,shownAt:1000,visibleMs:100,answer:'decline'})+'\n'));
+    });
+  };
+  const launch=((_command:unknown,args:string[],options:any)=>{
+    assert.equal(options.windowsHide,false,'Visible question must not use the background-helper hidden startup mode');
+    assert.equal(options.shell,false);assert(args.includes('-File'));assert(!args.some(a=>/bypass/i.test(a)));
+    return child;
+  }) as unknown as typeof spawn;
+  const answer=await desktopHandoffPrompt(undefined,launch)({requestId:'owned-question',title:'中文桌面测试'} as HandoffConsentRecord);
+  assert.deepEqual(answer,{answer:'decline',displayedAt:1000,visibleMs:100,transport:'windows-desktop'});
 });

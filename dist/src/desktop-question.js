@@ -12,14 +12,16 @@ export function validDesktopReply(row, offer, shownAt) {
         && (row.answer !== 'timeout' || row.visibleMs >= 30_000);
 }
 /** Own user-facing app window; never changes the host's approval or security policy. */
-export function desktopHandoffPrompt(diagnose) {
+export function desktopHandoffPrompt(diagnose, launch = spawn) {
     return async (offer, signal) => {
         if (!desktopQuestionAvailable() || signal?.aborted)
             return 'unavailable';
         return new Promise(resolve => {
             const helper = fileURLToPath(new URL('../../scripts/desktop-question.ps1', import.meta.url));
             diagnose?.(helper);
-            const child = spawn(path.join(process.env.SystemRoot ?? 'C:/Windows', 'System32/WindowsPowerShell/v1.0/powershell.exe'), ['-NoProfile', '-STA', '-File', helper], { windowsHide: true, stdio: ['pipe', 'pipe', 'pipe'], shell: false });
+            const child = launch(path.join(process.env.SystemRoot ?? 'C:/Windows', 'System32/WindowsPowerShell/v1.0/powershell.exe'), 
+            // This is the user-requested interactive window, so SW_HIDE must not be inherited.
+            ['-NoProfile', '-STA', '-File', helper], { windowsHide: false, stdio: ['pipe', 'pipe', 'pipe'], shell: false });
             let done = false, pending = '', shownAt = null;
             const finish = (answer) => {
                 if (done)
