@@ -1,5 +1,5 @@
 {
-  "version": "0.3.0-beta.6",
+  "version": "0.3.0-beta.7",
   "scanned": true,
   "files": [
     {
@@ -105,7 +105,7 @@
     {
       "path": "src/mcp-server.ts",
       "bytes": 1974,
-      "sha256": "f34237764bc1b162e3b97400dcc200e8261cdbae5ca868f8ddb3325b6f55bff8"
+      "sha256": "4291e09d9c3455a5608f51e53b6c1a5ef5c24d5cad4f042e3a8892223900f450"
     },
     {
       "path": "src/native-control.ts",
@@ -135,7 +135,7 @@
     {
       "path": "src/task-tools.ts",
       "bytes": 46832,
-      "sha256": "21fbb6d9c7e4a3c7e504ff7ae543acd80ae6ac913dfa78e162cc870b0c99ef23"
+      "sha256": "b053686fed5ee00e558f9ff9cdbf04bdede30f6198799ea8ca780a371dee3022"
     },
     {
       "path": "src/tool-store.ts",
@@ -550,7 +550,7 @@
     {
       "path": "dist/src/mcp-server.js",
       "bytes": 2059,
-      "sha256": "60892fbdc462a8ebc22021a7901f69957b0d61d20c4c2fe459057c7e0dfb4bd1"
+      "sha256": "3c0ef211ddb76508348615e70bece39c588e3ffd98ea4963a94e7c68a2f99ead"
     },
     {
       "path": "dist/src/mcp-server.js.map",
@@ -640,7 +640,7 @@
     {
       "path": "dist/src/task-tools.js",
       "bytes": 48408,
-      "sha256": "fe6cb654f0e7390e2db5a2cdcfb7bdf0c275bdd6c9614329a77f31a50e167f06"
+      "sha256": "c5033b28afd40e690a2f66e58fe5934b28b0b00325cba729fe79db1e0f784ba3"
     },
     {
       "path": "dist/src/task-tools.js.map",
@@ -999,8 +999,13 @@
     },
     {
       "path": "scripts/desktop-question.ps1",
-      "bytes": 7243,
-      "sha256": "cf3f9f8b01b3f4a339b64185349493ef5139e602bcab895fd4770cf09f2eefd9"
+      "bytes": 9496,
+      "sha256": "73ad09ecdd52642ec70bcd25bba7096753fa72a2d1aa207a1da7de2f1309eb4f"
+    },
+    {
+      "path": "scripts/desktop-question.xaml",
+      "bytes": 7333,
+      "sha256": "3360f0cc5b3109f6cb0c1c90748fce69b3f383e2e4e65382a28d74a7b0b1b747"
     },
     {
       "path": "scripts/doctor.mjs",
@@ -1094,8 +1099,8 @@
     },
     {
       "path": "docs/HANDOFF-CONFIRMATION.md",
-      "bytes": 3177,
-      "sha256": "bbf36c305fd5ba910cfaa9ff6001ad51b4705b36bcf718a0f276b7846da7f875"
+      "bytes": 4062,
+      "sha256": "3bd65503299c4b8635f474619bfe91a860b33e88779a6bf90a3f32c9b2b5aebe"
     },
     {
       "path": "docs/INSTALL.md",
@@ -1130,12 +1135,12 @@
     {
       "path": "package.json",
       "bytes": 1330,
-      "sha256": "686465eb3e0b7488abadacbc6d2e2ec3ab1095f6bcdd1d3d3fbb3917631cb14f"
+      "sha256": "f072d507e26c6b4c9044251d305e7fad1222c09894486170f36e99def26296a1"
     },
     {
       "path": "package-lock.json",
       "bytes": 45781,
-      "sha256": "11b0a2c04c5c4708920e60811a4c19b9db44cb13c9c3b2bbe77298b0cd276bae"
+      "sha256": "843cd4a611325c13b766262213913903344d38e8e9d94878a1394023126c6fea"
     },
     {
       "path": "tsconfig.json",
@@ -1159,8 +1164,8 @@
     },
     {
       "path": "verification/RESULTS.md",
-      "bytes": 6903,
-      "sha256": "50645301374d5846f6d050c32ebc3749d218855f6597cf5e6455d1dc55026ba5"
+      "bytes": 7810,
+      "sha256": "8c38e0a538f57c48a91ceca56af47132cdb12808d24655ba92f86959a4bfbd74"
     },
     {
       "path": "verification/install-check.json",

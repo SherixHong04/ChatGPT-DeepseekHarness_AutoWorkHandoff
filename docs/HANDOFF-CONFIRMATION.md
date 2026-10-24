@@ -1,4 +1,8 @@
-# 转交前选择（beta.6）
+# 转交前选择（beta.7）
+
+beta.7将询问界面改为紧凑WPF窗口：宽420逻辑像素，普通任务名时高约240；使用当前显示器DPI、清晰字体与像素对齐，避免低分辨率界面被整体放大。界面随Windows应用浅色/深色设置选择配色，明确区分“暂不转交”和“立即转交”，用文字及进度条显示剩余时间。长任务名最多占两行，悬停可看完整名称。关闭或按Esc均取消；不设置按Enter立即转交的默认按钮。用户已实际确认大小和清晰度改善。
+
+本机实际窗口DPI为144、缩放1.5；另完成96/144/192 DPI的界面渲染和浅深色、长任务名布局检查。这些渲染检查不等同于在三种物理显示器设置下操作实测。独立置顶、可见性核验及30秒计时规则保持一致；实际新版窗口可见计时约30秒后返回timeout，测试未派发任务。
 
 beta.6修正beta.5的隐藏启动：windowsHide=true会给交互窗体继承SW_HIDE；Shown事件、提示音及Form.Visible不能证明屏幕可见。现在使用可见启动并检查IsWindowVisible、IsIconic、DWM cloak及WindowFromPoint，窗口中心被遮挡或位于非当前虚拟桌面时暂停计时。用户已实际看到修补窗口并点击暂不转交，程序收到decline；无操作测试在约30秒可见计时后收到timeout。相关测试不会转交真实任务。
 
@@ -14,4 +18,4 @@ beta.6修正beta.5的隐藏启动：windowsHide=true会给交互窗体继承SW_H
 
 beta.4的MCP表单可能在never模式下由宿主立即取消，不能证明用户拒绝。beta.5不再用该通道作为默认；旧版无可见性证据的拒绝记录在重新询问时归档保留，不静默改成批准。新记录保存displayedAt、visibleMs及windows-desktop来源。
 
-部署后需正常重载GPT工具；capabilities报告beta.5及protocol=windows-desktop，visibilityVerified=false表示能力声明不替代本次实际显示证据。脚本执行受本机现有PowerShell策略约束，禁止使用ExecutionPolicy Bypass。策略不允许、缺少交互桌面等情况须明确报告。
+部署后需正常重载GPT工具；capabilities应报告0.3.0-beta.7及protocol=windows-desktop，visibilityVerified=false表示能力声明不替代本次实际显示证据。脚本执行受本机现有PowerShell策略约束，禁止使用ExecutionPolicy Bypass。策略不允许、缺少交互桌面等情况须明确报告。
