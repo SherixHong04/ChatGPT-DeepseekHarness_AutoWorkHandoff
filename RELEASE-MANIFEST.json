@@ -1154,8 +1154,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 2749,
-      "sha256": "1e891b8493e4399c60f3e509693fbcd35b4dec6cec09244259c4d49c38021b47"
+      "bytes": 3594,
+      "sha256": "1d0441d41fd016db89ea8eeb680018860bda39adfd5018a9e3921f9b8337be9d"
     },
     {
       "path": "THIRD-PARTY-LICENSES.txt",
@@ -1176,6 +1176,11 @@
       "path": "verification/LOCAL-WAKE.md",
       "bytes": 2369,
       "sha256": "8ac23dd2807b80fdf33fd8d8a28115e94fd95f5432201f36375fa24258dd7e18"
+    },
+    {
+      "path": "docs/RELEASE-0.3.0-beta.8.md",
+      "bytes": 3087,
+      "sha256": "ef8eb2d651d5e8a4a7e8e42892743530e9f4b208c0526da73ebaca552c79158f"
     }
   ],
   "excludesRuntimeAndAccounts": true,
