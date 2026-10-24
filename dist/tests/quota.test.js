@@ -19,7 +19,7 @@ test('quota uses both actual native windows, drops account data and never spends
     assert(!JSON.stringify(observation).includes('Credits'));
 });
 test('long window constrains work and handoff independently of a healthy short window', () => {
-    const decision = assessQuota(observeQuota(usage(1, 80), at, at), undefined, at);
+    const decision = assessQuota(observeQuota(usage(1, 81), at, at), undefined, at);
     assert.equal(decision.allowWork, false);
     assert.equal(decision.allowHandoff, true);
     assert.equal(decision.allowReview, true);
@@ -27,6 +27,21 @@ test('long window constrains work and handoff independently of a healthy short w
     assert.equal(decision.recheckAt, at + 604800000);
     const low = assessQuota(observeQuota(usage(1, 96), at, at), undefined, at);
     assert(!low.allowReview && !low.allowHandoff);
+});
+test('handoff threshold is strictly below 20 percent in either native window, with reserves unchanged', () => {
+    for (const shortIsLow of [true, false]) {
+        for (const remaining of [20.01, 20, 19.99, 15, 14.99, 10, 9.99]) {
+            const used = 100 - remaining;
+            const observation = observeQuota(usage(shortIsLow ? used : 1, shortIsLow ? 1 : used), at, at);
+            const decision = assessQuota(observation, undefined, at);
+            assert.equal(decision.allowWork, remaining >= 20);
+            assert.equal(decision.allowHandoff, remaining >= 15);
+            assert.equal(decision.allowReview, remaining >= 10);
+            assert.equal(decision.allowResume, false);
+        }
+    }
+    const recovery = assessQuota(observeQuota(usage(60, 60), at, at), undefined, at);
+    assert.equal(recovery.allowResume, true);
 });
 test('missing, malformed, duplicate and other-bucket windows remain unknown', () => {
     for (const value of [null, {}, { ...usage(), rateLimitsByLimitId: {} },

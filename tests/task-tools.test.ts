@@ -56,7 +56,7 @@ test('task tools retain conversation, resource root and work root scope without 
 
 test('threshold confirmation blocks packaging and new dispatch before the user choice; decline stays blocked', async t => {
   const f=setup(t,{launchJob:()=>{throw Error('must not launch');}});
-  await f.tools.call('handoff_record_quota',{usage:usage(baseTime,72),observedAt:baseTime});
+  await f.tools.call('handoff_record_quota',{usage:usage(baseTime,82),observedAt:baseTime});
   const input=f.input('pending-task');
   await assert.rejects(f.tools.call('handoff_publish',{input,revision:null}),errorCode('HANDOFF_CONFIRMATION_REQUIRED'));
   await assert.rejects(f.tools.call('handoff_prepare_context',{taskId:input.taskId,conversationId:input.conversationId}),errorCode('HANDOFF_CONFIRMATION_REQUIRED'));

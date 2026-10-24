@@ -10,7 +10,7 @@ export interface QuotaPolicy {
   staleAfterMs: number; workPercent: number; handoffPercent: number; reviewPercent: number; resumePercent: number;
 }
 export const defaultQuotaPolicy: QuotaPolicy = {
-  staleAfterMs: 300_000, workPercent: 20, handoffPercent: 5, reviewPercent: 10, resumePercent: 40,
+  staleAfterMs: 300_000, workPercent: 5, handoffPercent: 5, reviewPercent: 10, resumePercent: 40,
 };
 export function quotaPolicy(value: unknown): QuotaPolicy {
   const row = record(value, ['staleAfterMs', 'workPercent', 'handoffPercent', 'reviewPercent', 'resumePercent'], '额度策略');

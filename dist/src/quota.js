@@ -1,6 +1,6 @@
 import { positive, record, requireCondition } from './contracts.js';
 export const defaultQuotaPolicy = {
-    staleAfterMs: 300_000, workPercent: 20, handoffPercent: 5, reviewPercent: 10, resumePercent: 40,
+    staleAfterMs: 300_000, workPercent: 5, handoffPercent: 5, reviewPercent: 10, resumePercent: 40,
 };
 export function quotaPolicy(value) {
     const row = record(value, ['staleAfterMs', 'workPercent', 'handoffPercent', 'reviewPercent', 'resumePercent'], '额度策略');

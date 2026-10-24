@@ -1,5 +1,5 @@
 {
-  "version": "0.3.0-beta.7",
+  "version": "0.3.0-beta.8",
   "scanned": true,
   "files": [
     {
@@ -105,7 +105,7 @@
     {
       "path": "src/mcp-server.ts",
       "bytes": 1974,
-      "sha256": "4291e09d9c3455a5608f51e53b6c1a5ef5c24d5cad4f042e3a8892223900f450"
+      "sha256": "12b0908286621857f4a5fa94c3d64e18b47b856e45bfa993de07fd1d4004fccf"
     },
     {
       "path": "src/native-control.ts",
@@ -124,8 +124,8 @@
     },
     {
       "path": "src/quota.ts",
-      "bytes": 6390,
-      "sha256": "756f54f7eea018758e9d84ae08c959bad3cc469d7e3be5de675879b00e8576cd"
+      "bytes": 6389,
+      "sha256": "5570fb8227662fc3df686f7cf359e9f4254eaf253cb1abd5fdbf5092fbcc8989"
     },
     {
       "path": "src/task-context.ts",
@@ -135,7 +135,7 @@
     {
       "path": "src/task-tools.ts",
       "bytes": 46832,
-      "sha256": "b053686fed5ee00e558f9ff9cdbf04bdede30f6198799ea8ca780a371dee3022"
+      "sha256": "5c828da2aaf92f39c1026e8d4d862e2a03be007636ad35ccfb7a5f6f332b80da"
     },
     {
       "path": "src/tool-store.ts",
@@ -184,8 +184,8 @@
     },
     {
       "path": "tests/handoff-consent.test.ts",
-      "bytes": 4622,
-      "sha256": "37ebf8b38d4d378167be41de7e47eefa3ff61988538f5d64afe10469c357ca70"
+      "bytes": 4998,
+      "sha256": "3a4fa3f258970f19819eb9b07799301989c907c473624e7430516456c804276b"
     },
     {
       "path": "tests/handoff-question.test.ts",
@@ -235,12 +235,12 @@
     {
       "path": "tests/quota-hooks.test.ts",
       "bytes": 6820,
-      "sha256": "b3ca7055cdd6d0f3a5479f50f5850e8095adce2cbd55c02d377aa64459928277"
+      "sha256": "6f6e901cffbb10ce7986555eb69356a123cd2b0ac25757c20912a03175d41191"
     },
     {
       "path": "tests/quota.test.ts",
-      "bytes": 3536,
-      "sha256": "6ca65186a08b5ad884f704d31915d429136978d865ab52ba8ba99949e9b5762e"
+      "bytes": 4331,
+      "sha256": "97ceeeb96ccd0747d9d7301e94c7dcd27c4d43dbcac41c3c3424cebc844de798"
     },
     {
       "path": "tests/task-context.test.ts",
@@ -250,7 +250,7 @@
     {
       "path": "tests/task-tools.test.ts",
       "bytes": 20372,
-      "sha256": "fd7f513b657bc4ea9c2c9e0c594bef2861d5c0ba62994574d2639c2e564dbd9b"
+      "sha256": "f024480405c5ba5530e2a3b0e110a4d45eb7baaa9aaa13937907cac64967ee9c"
     },
     {
       "path": "tests/trial-policy.test.ts",
@@ -550,7 +550,7 @@
     {
       "path": "dist/src/mcp-server.js",
       "bytes": 2059,
-      "sha256": "3c0ef211ddb76508348615e70bece39c588e3ffd98ea4963a94e7c68a2f99ead"
+      "sha256": "644986228c0996faa8eb6fe8a645f936574eed34e19759fc728bea72c169d55e"
     },
     {
       "path": "dist/src/mcp-server.js.map",
@@ -609,13 +609,13 @@
     },
     {
       "path": "dist/src/quota.js",
-      "bytes": 5411,
-      "sha256": "5dae099727aac3eb9b927c4a80ede2d723285cc339ea677d28a40ed1592fa117"
+      "bytes": 5410,
+      "sha256": "0c65f4ae541f08ef65661f2a34cc17592d61ada8807610058336289e57cdb7c9"
     },
     {
       "path": "dist/src/quota.js.map",
       "bytes": 5366,
-      "sha256": "ceb35ab8658d578d1ad7cc6363ff83a3efb9afb7653c1a53407121c6b72352f2"
+      "sha256": "3048e145ceb71b9281fb9461c288bdb7575bd92c0ca0ec20442c440502fda632"
     },
     {
       "path": "dist/src/task-context.d.ts",
@@ -640,7 +640,7 @@
     {
       "path": "dist/src/task-tools.js",
       "bytes": 48408,
-      "sha256": "c5033b28afd40e690a2f66e58fe5934b28b0b00325cba729fe79db1e0f784ba3"
+      "sha256": "1bec5adcbd7ada886b8d0cc4840b54b5ce2437014d54e084e1449a36a9ca46b5"
     },
     {
       "path": "dist/src/task-tools.js.map",
@@ -774,13 +774,13 @@
     },
     {
       "path": "dist/tests/handoff-consent.test.js",
-      "bytes": 5131,
-      "sha256": "976b491b23cf44dcbd6b6c14c583944d0dfd95c909de2b963ef7e185f30e7b61"
+      "bytes": 5574,
+      "sha256": "2dff880f643f9430caf7bf86ba62d445d74caf1054f21171db76b97d07a45453"
     },
     {
       "path": "dist/tests/handoff-consent.test.js.map",
-      "bytes": 6823,
-      "sha256": "fe2c2377aa4485799d7e531b96b6716f594ae068e8075174bb26833bf57d7eb4"
+      "bytes": 7405,
+      "sha256": "b9f6bf02eb2d0d7d04fef5256f6f2b4bf668a284c125f2e0b2524bdcc7609e9b"
     },
     {
       "path": "dist/tests/handoff-question.test.d.ts",
@@ -925,7 +925,7 @@
     {
       "path": "dist/tests/quota-hooks.test.js",
       "bytes": 6756,
-      "sha256": "aead5a4ce409deab0f2e3549e07eb8394ef5ba2d2605891e41f88bdcd2a32301"
+      "sha256": "566d85469da9e71fda94c8acbe62dbbb0f0ec9a27992f6f5766f978d38e0d3c0"
     },
     {
       "path": "dist/tests/quota-hooks.test.js.map",
@@ -939,13 +939,13 @@
     },
     {
       "path": "dist/tests/quota.test.js",
-      "bytes": 3771,
-      "sha256": "26605c269c272ee294cf0a4e64919dc25eac1fb8479d9f4de76ae2f1d79a38e6"
+      "bytes": 4624,
+      "sha256": "5780af833e643bf49f3cd8efdcf8e1c759d8274fca4479367d3c8bb93e8fb2de"
     },
     {
       "path": "dist/tests/quota.test.js.map",
-      "bytes": 4209,
-      "sha256": "aab9d0019deded247a61060feafcb89fa720de0bb30a596e86c8b5b4a1de13d2"
+      "bytes": 5198,
+      "sha256": "b1d6d6c0bc266a26b4da94fe8061ffadd33a39f700bfcf3566445838e1fa00e1"
     },
     {
       "path": "dist/tests/task-context.test.d.ts",
@@ -970,7 +970,7 @@
     {
       "path": "dist/tests/task-tools.test.js",
       "bytes": 20212,
-      "sha256": "c3028ae8fe532a8199bf5f88e1b51bc321b58734f45b19a69736d819541e70e0"
+      "sha256": "887df9a559686707e5b18efc9731938171edbadc0fb4e0dc73b091018fa84e8d"
     },
     {
       "path": "dist/tests/task-tools.test.js.map",
@@ -1099,8 +1099,8 @@
     },
     {
       "path": "docs/HANDOFF-CONFIRMATION.md",
-      "bytes": 4062,
-      "sha256": "3bd65503299c4b8635f474619bfe91a860b33e88779a6bf90a3f32c9b2b5aebe"
+      "bytes": 4570,
+      "sha256": "d3c3727a3d63644f4c17de1d89e80bcccf61b5c95cc8dfc4bee4cfe892595de5"
     },
     {
       "path": "docs/INSTALL.md",
@@ -1135,12 +1135,12 @@
     {
       "path": "package.json",
       "bytes": 1330,
-      "sha256": "f072d507e26c6b4c9044251d305e7fad1222c09894486170f36e99def26296a1"
+      "sha256": "a1fec953b9374d8ada9ff8b96b4e035f8043065bfcea687a2709618b257d6c53"
     },
     {
       "path": "package-lock.json",
       "bytes": 45781,
-      "sha256": "843cd4a611325c13b766262213913903344d38e8e9d94878a1394023126c6fea"
+      "sha256": "34f8b5686d945622aa10dae4f8dac21f5f6bf3a250d735c852da22973e4836e9"
     },
     {
       "path": "tsconfig.json",
@@ -1164,8 +1164,8 @@
     },
     {
       "path": "verification/RESULTS.md",
-      "bytes": 7810,
-      "sha256": "8c38e0a538f57c48a91ceca56af47132cdb12808d24655ba92f86959a4bfbd74"
+      "bytes": 8452,
+      "sha256": "d2ff78b1c6d26799cc3ac9e6cebd77e00d1926e83a5dbd706410366cc92a4c04"
     },
     {
       "path": "verification/install-check.json",

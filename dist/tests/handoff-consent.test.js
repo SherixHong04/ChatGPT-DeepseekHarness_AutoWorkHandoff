@@ -5,16 +5,25 @@ import { HandoffConsent, HANDOFF_QUESTION_MS } from '../src/handoff-consent.js';
 import { ToolStore } from '../src/tool-store.js';
 import { assessQuota, observeQuota } from '../src/quota.js';
 import { baseTime, fixture, errorCode } from './helpers.js';
-function setup(t) {
+function setup(t, initialUsed = 82) {
     const f = fixture(t), store = new ToolStore(path.join(f.root, 'consent.sqlite'));
     f.onCleanup(() => store.close());
-    let now = baseTime, used = 72;
+    let now = baseTime, used = initialUsed;
     const quota = () => assessQuota(observeQuota({ ordinaryUsageAllowed: true, rateLimits: { spendControlReached: false,
             primary: { usedPercent: used, windowDurationMins: 300, resetsAt: Math.floor(now / 1000) + 3600 },
             secondary: { usedPercent: 10, windowDurationMins: 10080, resetsAt: Math.floor(now / 1000) + 604800 } } }, now, now), undefined, now);
     const gate = new HandoffConsent(store, quota, () => now), task = { taskId: 'task-a', conversationId: 'original-chat', title: 'Known authorized task' };
-    return { store, gate, task, advance: (ms) => { now += ms; }, recover: () => { used = 1; store.noteConsentRecovery(++now); }, low: () => { used = 72; } };
+    return { store, gate, task, advance: (ms) => { now += ms; }, recover: () => { used = 1; store.noteConsentRecovery(++now); }, low: () => { used = 82; } };
 }
+test('20 percent and the former 28 percent trigger do not ask; 19 percent requires a choice', async (t) => {
+    for (const used of [72, 80, 81]) {
+        const f = setup(t, used);
+        let prompts = 0;
+        const result = await f.gate.confirm(f.task, async () => { prompts++; return 'decline'; });
+        assert.equal(prompts, used > 80 ? 1 : 0);
+        assert.equal(result.allowed, used <= 80);
+    }
+});
 test('explicit acceptance allows only the bound task and conversation without waiting', async (t) => {
     const f = setup(t);
     let calls = 0;
