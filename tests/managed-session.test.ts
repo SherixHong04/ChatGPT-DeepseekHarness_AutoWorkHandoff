@@ -9,7 +9,7 @@ import { initializeChatQueue, newChatBinding } from '../src/harness-chats.js';
 import { fingerprint } from '../src/packet.js';
 import { fixture, baseTime, errorCode } from './helpers.js';
 import type { TestContext } from 'node:test';
-async function setup(t: TestContext) {
+async function setup(t: TestContext, acceptedPromptModes?: readonly string[]) {
   const f = fixture(t), queueRoot = path.join(f.root, 'queue'), workspaceRoot = path.join(f.root, 'shared');
   mkdirSync(queueRoot); mkdirSync(workspaceRoot); mkdirSync(path.join(queueRoot, 'runs'));
   const policy = { queueRoot, workspaceRoot, enabledAt: baseTime }; initializeChatQueue(policy);
@@ -21,7 +21,10 @@ async function setup(t: TestContext) {
     workspaceRegistry: { async resolveByPath() { return workspace; }, async create() { return workspace; }, get() { return workspace; },
       archivedSessionIds: [], async archiveSession() {} },
     sessionController: { async create({ sessionId }) { created = true; return { sessionId }; }, async rename() { return { title: 'task', seq }; },
-      async prompt() { calls++; if (loseReply) throw new Error('reply lost'); active = true; return { accepted: true }; } },
+      async prompt(request) {
+        if (acceptedPromptModes) assert(acceptedPromptModes.includes(request.mode), 'Harness session/prompt rejected unsupported delivery mode');
+        calls++; if (loseReply) throw new Error('reply lost'); active = true; return { accepted: true };
+      } },
     sessionQuery: { async observeSession() {
       if (!created) throw Object.assign(new Error('missing'), { code: 'SESSION_QUERY_SESSION_NOT_FOUND' });
       return { header: { id: binding.sessionId, cwd: workspaceRoot }, events, projections: { asOfSeq: seq, values: { title: 'task' } }, [Symbol.dispose]() {} };
@@ -43,6 +46,16 @@ test('managed prompt enters the registered chat only once and latest user contin
   await f.manager.call(f.input); assert.equal(f.count(), 1); f.end();
   const end = await f.manager.call({ ...f.input, kind: 'inspect' }); assert.equal(end.chat.active, false); assert.equal(end.turnReason, 'completed');
   assert.deepEqual(end.messages.map(m => m.text), ['user continuation', 'done']); assert(!JSON.stringify(end).includes('private'));
+});
+
+test('managed handoff uses the public Harness queue delivery mode', async t => {
+  // Installed Harness 0.2.1-rc.3 SessionPromptRequest accepts queue or steer.
+  // A handoff must queue normally, including when the user starts work concurrently.
+  const f = await setup(t, ['queue']);
+  const accepted = await f.manager.call(f.input);
+  assert.equal(accepted.phase, 'accepted');
+  await f.manager.call(f.input);
+  assert.equal(f.count(), 1);
 });
 test('lost prompt acknowledgement is unknown and cannot cause automatic replay', async t => {
   const f = await setup(t); f.lose(); await assert.rejects(f.manager.call(f.input));

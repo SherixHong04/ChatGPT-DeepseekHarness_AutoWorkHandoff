@@ -79,8 +79,8 @@
     },
     {
       "path": "src/managed-session.ts",
-      "bytes": 10050,
-      "sha256": "c89f1bfab41a362626793be2362598481c6c6b4e33fa70e2c8884afd79b09bb5"
+      "bytes": 10044,
+      "sha256": "8c5cae5532ab4d4eb7ec78cbc1160cc8ea591708392fc218347433628ac1d73b"
     },
     {
       "path": "src/managed-worker.ts",
@@ -189,8 +189,8 @@
     },
     {
       "path": "tests/managed-session.test.ts",
-      "bytes": 4622,
-      "sha256": "0948ca13f19abe75ef703aa52a16e421663ed139be8e89a22ba4480ca55f745b"
+      "bytes": 5277,
+      "sha256": "57691feff69c20f94ed5831ce8b181a7e61bfaaa8a719eb88014a364ce22290d"
     },
     {
       "path": "tests/managed-worker.test.ts",
@@ -439,18 +439,18 @@
     },
     {
       "path": "dist/src/managed-session.d.ts",
-      "bytes": 1536,
-      "sha256": "497cb4cddb6ee1f43c9fccf683caf559b551e56861b5f12baa016dd04e2bb56b"
+      "bytes": 1533,
+      "sha256": "a5017d830fc211de1af69acd805e46c3ca1dcf7283b83c367aef3cd096d878ad"
     },
     {
       "path": "dist/src/managed-session.js",
-      "bytes": 9478,
-      "sha256": "c1bedf41531796d2188232cd41a03b83ec51fd34207a631bd014172aa9421e83"
+      "bytes": 9475,
+      "sha256": "ecc2f35a75068accfde0d058dc4634aaf4fc265fbe9462b68ce8a14d389c21d7"
     },
     {
       "path": "dist/src/managed-session.js.map",
       "bytes": 9047,
-      "sha256": "c52097b7138c341188e1949db481fec0303905d093ada59539c7af00cf02647e"
+      "sha256": "1fd47d74d73718ada7bb05fa61d985cf00bda5b2183e7606bd0f362c2b5439ed"
     },
     {
       "path": "dist/src/managed-worker.d.ts",
@@ -759,13 +759,13 @@
     },
     {
       "path": "dist/tests/managed-session.test.js",
-      "bytes": 4714,
-      "sha256": "21fc3a6d9b3a00c8d9d97a349838e2ee1d4322321774d2355eadc793e6ec1f91"
+      "bytes": 5458,
+      "sha256": "943c8b5f42518e32e311f464e9e09bab68fa3a3e772bbe1ff79b58c9cbd894be"
     },
     {
       "path": "dist/tests/managed-session.test.js.map",
-      "bytes": 5967,
-      "sha256": "175195b055b889c306a4459c7c48045657c1b9f7fdb71153002a78fe17801e0b"
+      "bytes": 6537,
+      "sha256": "cbc9f07c01b39bb3783fb021f56865b1ff762c9d927fc9053493bc17ebd0b504"
     },
     {
       "path": "dist/tests/managed-worker.test.d.ts",
@@ -939,8 +939,8 @@
     },
     {
       "path": "plugins/harness-chat-manager/lib/managed-session.js",
-      "bytes": 9478,
-      "sha256": "c1bedf41531796d2188232cd41a03b83ec51fd34207a631bd014172aa9421e83"
+      "bytes": 9475,
+      "sha256": "ecc2f35a75068accfde0d058dc4634aaf4fc265fbe9462b68ce8a14d389c21d7"
     },
     {
       "path": "plugins/harness-chat-manager/lib/packet.js",
@@ -1024,8 +1024,8 @@
     },
     {
       "path": "verification/RESULTS.md",
-      "bytes": 4639,
-      "sha256": "2dc2b8ce62d82478cb92eb85fea17695c67047477ba24434b39e7e9f62be183f"
+      "bytes": 5306,
+      "sha256": "4a30377fd09d1a5aba14955602cb015c39fd6b20ddf4a59dc8fc0ab126bf5601"
     },
     {
       "path": "verification/install-check.json",
@@ -1036,6 +1036,11 @@
       "path": "verification/LOCAL-WAKE.md",
       "bytes": 2369,
       "sha256": "8ac23dd2807b80fdf33fd8d8a28115e94fd95f5432201f36375fa24258dd7e18"
+    },
+    {
+      "path": "docs/COMPATIBILITY-20261024.md",
+      "bytes": 3024,
+      "sha256": "18498bc674a35290cde1e189bff8e066dce8c2393f29fd7f11ee0be2303f03b2"
     }
   ],
   "excludesRuntimeAndAccounts": true,

@@ -14,7 +14,7 @@ export interface RunState { chat: ChatState; phase: 'intent' | 'accepted' | 'unk
 interface RunRecord { signature: string; phase: RunState['phase']; acceptedAt: number | null; beforeSequence: number }
 export interface RunHost extends HarnessChatHost {
   sessionController: HarnessChatHost['sessionController'] & {
-    prompt(request: { sessionId: string; requestId: string; mode: 'followup'; content: { type: 'text'; text: string }[] }, signal: AbortSignal): Promise<{ accepted: boolean }>;
+    prompt(request: { sessionId: string; requestId: string; mode: 'queue'; content: { type: 'text'; text: string }[] }, signal: AbortSignal): Promise<{ accepted: boolean }>;
   };
 }
 const PROTOCOL = 'work-handoff-managed-session-v1';
@@ -47,7 +47,7 @@ export class ManagedSession {
       writeFileSync(filename, canonical(run) + '\n', { flag: 'wx' });
       try {
         const result = await this.host.sessionController.prompt({ sessionId: input.binding.sessionId,
-          requestId: input.commandId, mode: 'followup', content: [{ type: 'text', text: input.prompt }] }, new AbortController().signal);
+          requestId: input.commandId, mode: 'queue', content: [{ type: 'text', text: input.prompt }] }, new AbortController().signal);
         requireCondition(result.accepted, 'RUN_NOT_ACCEPTED', '宿主未确认接收。');
         run.phase = 'accepted'; run.acceptedAt = Date.now(); atomicChatJson(filename, run);
       } catch (error) { run.phase = 'unknown'; atomicChatJson(filename, run); throw error; }
