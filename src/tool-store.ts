@@ -53,6 +53,8 @@ export class ToolStore {
     this.db.exec('BEGIN IMMEDIATE');
     try {
       const next = update(this.get<HandoffConsentRecord>('handoff-consent', key));
+      const previous = this.get<HandoffConsentRecord>('handoff-consent', key);
+      if (previous && previous.requestId !== next.requestId) this.save('consent-history', previous.requestId, previous);
       this.save('handoff-consent', key, next); this.db.exec('COMMIT'); return next;
     } catch (error) { this.db.exec('ROLLBACK'); throw error; }
   }

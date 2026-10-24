@@ -29,9 +29,9 @@ test('standard MCP form preserves user choices and really times out after 30 sec
     const call = async () => { const r = await client.callTool({ name: 'isolated-probe', arguments: {} }); return r.content[0]?.text; };
     assert.equal(await call(), 'handoff');
     choice = 'decline';
-    assert.equal(await call(), 'decline');
+    assert.equal(await call(), 'unavailable');
     choice = 'cancel';
-    assert.equal(await call(), 'decline');
+    assert.equal(await call(), 'unavailable');
     choice = 'silent';
     const started = performance.now();
     assert.equal(await call(), 'timeout');

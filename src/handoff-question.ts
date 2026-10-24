@@ -15,7 +15,7 @@ export function mcpHandoffPrompt(server: Server, relatedRequestId: RequestId): H
         requestedSchema: { type: 'object', properties: { decision: { type: 'string', title: '转交选择',
           enum: ['立即转交', '暂不转交'] } }, required: ['decision'] } },
       { relatedRequestId, ...(signal ? { signal } : {}), timeout: HANDOFF_QUESTION_MS, maxTotalTimeout: HANDOFF_QUESTION_MS, resetTimeoutOnProgress: false });
-      if (reply.action !== 'accept') return 'decline';
+      if (reply.action !== 'accept') return 'unavailable'; // A host can auto-cancel without ever showing the form.
       return reply.content?.decision === '立即转交' ? 'handoff' : 'decline';
     } catch (error) {
       if (signal?.aborted) return 'cancelled';

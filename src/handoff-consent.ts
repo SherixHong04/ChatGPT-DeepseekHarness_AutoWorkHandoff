@@ -10,9 +10,12 @@ export interface HandoffConsentRecord {
   createdAt: number; deadlineAt: number; settledAt: number | null;
   phase: 'waiting' | 'approved' | 'declined' | 'unavailable' | 'interrupted';
   reason: string;
+  confirmationVersion?: 2;
+  displayedAt?: number; visibleMs?: number; transport?: 'windows-desktop';
 }
 export type HandoffAnswer = 'handoff' | 'decline' | 'timeout' | 'cancelled' | 'unavailable';
-export type HandoffPrompt = (offer: HandoffConsentRecord, signal?: AbortSignal) => Promise<HandoffAnswer>;
+export type HandoffPromptResult = HandoffAnswer | { answer: HandoffAnswer; displayedAt: number; visibleMs: number; transport: 'windows-desktop' };
+export type HandoffPrompt = (offer: HandoffConsentRecord, signal?: AbortSignal) => Promise<HandoffPromptResult>;
 export class HandoffConsent {
   constructor(private readonly store: ToolStore, private readonly quota: () => QuotaDecision, private readonly now = Date.now) {}
   private key(taskId: string, conversationId: string): string { return digest({ taskId, conversationId }); }
@@ -41,21 +44,22 @@ export class HandoffConsent {
     if (!before.required) return before;
     const proposed: HandoffConsentRecord = { taskId, conversationId, title, requestId: randomUUID(),
       recoveryAt: this.store.get<{ at: number }>('consent-recovery', 'codex')?.at ?? 0,
-      createdAt: this.now(), deadlineAt: this.now() + HANDOFF_QUESTION_MS, settledAt: null, phase: 'waiting', reason: 'question-pending' };
+      createdAt: this.now(), deadlineAt: this.now() + HANDOFF_QUESTION_MS, settledAt: null, phase: 'waiting', reason: 'question-pending', confirmationVersion: 2 };
     const key = this.key(taskId, conversationId);
-    const owned = this.store.updateConsent(key, previous => previous && previous.recoveryAt === proposed.recoveryAt
+    const owned = this.store.updateConsent(key, previous => previous && !(previous.confirmationVersion === undefined && previous.reason === 'user-declined-or-cancelled') && previous.recoveryAt === proposed.recoveryAt
       && (!task.reconsider || previous.phase === 'waiting' || previous.phase === 'approved') ? previous : proposed);
     if (owned.requestId !== proposed.requestId) return this.status(taskId, conversationId);
-    let answer: HandoffAnswer;
-    try { answer = signal?.aborted ? 'cancelled' : prompt ? await prompt(owned, signal) : 'unavailable'; }
-    catch { answer = 'unavailable'; }
+    let result: HandoffPromptResult;
+    try { result = signal?.aborted ? 'cancelled' : prompt ? await prompt(owned, signal) : 'unavailable'; }
+    catch { result = 'unavailable'; }
+    const answer = typeof result === 'string' ? result : result.answer;
     this.store.updateConsent(key, previous => {
       if (!previous || previous.requestId !== owned.requestId || previous.phase !== 'waiting') return previous ?? owned;
       const interrupted = signal?.aborted;
       const automatic = answer === 'timeout' && this.now() >= owned.deadlineAt;
       const phase = interrupted ? 'interrupted' : answer === 'handoff' || automatic ? 'approved'
         : answer === 'decline' || answer === 'cancelled' ? 'declined' : 'unavailable';
-      return { ...previous, phase, settledAt: this.now(), reason: interrupted ? 'origin-interrupted'
+      return { ...previous, ...(typeof result === 'string' ? {} : {displayedAt:result.displayedAt,visibleMs:result.visibleMs,transport:result.transport}), phase, settledAt: this.now(), reason: interrupted ? 'origin-interrupted'
         : automatic ? 'unanswered-30s-default-handoff' : answer === 'handoff' ? 'user-selected-handoff'
           : phase === 'declined' ? 'user-declined-or-cancelled' : 'question-unavailable-no-default' };
     });

@@ -25,6 +25,7 @@ import { TaskContexts, taskContextPolicy } from './task-context.js';
 import type { TaskContextPolicy } from './task-context.js';
 import { HandoffConsent, HANDOFF_QUESTION_MS } from './handoff-consent.js';
 import type { HandoffPrompt } from './handoff-consent.js';
+import { desktopQuestionAvailable } from './desktop-question.js';
 
 export interface ToolsConfig {
   schemaVersion: 1; db: string; store: string; workRoot: string; endpointFile: string; resourceRoots: string[]; quotaPolicy: QuotaPolicy;
@@ -169,8 +170,8 @@ export class TaskTools {
     requireCondition(Buffer.byteLength(JSON.stringify(value)) <= 1_048_576, 'TOOL_INPUT_TOO_LARGE', '单次任务工具输入超过1 MiB。');
     const row = record(value, Object.keys(definition.inputSchema.properties), '工具参数');
     for (const field of definition.inputSchema.required) requireCondition(Object.hasOwn(row, field), 'MISSING_FIELD', '缺少工具参数：' + field);
-    if (name === 'handoff_capabilities') return { schemaVersion: 1, version: '0.3.0-beta.4', transport: 'stdio', asyncHarness: true,
-      handoffConfirmation: { enabled: true, timeoutMs: HANDOFF_QUESTION_MS, defaultOnTimeout: 'handoff', declinesPersist: true, protocol: 'mcp-form-elicitation', supportedByCurrentClient: interaction !== undefined },
+    if (name === 'handoff_capabilities') return { schemaVersion: 1, version: '0.3.0-beta.5', transport: 'stdio', asyncHarness: true,
+      handoffConfirmation: { enabled: true, timeoutMs: HANDOFF_QUESTION_MS, defaultOnTimeout: 'handoff', declinesPersist: true, protocol: 'windows-desktop', supportedByCurrentClient: desktopQuestionAvailable(), visibilityVerified: false, requiresInteractiveUnlockedDesktop: true, independentOfSelectedChat: true },
       managedDesktopDispatch: true, managedCollection: true, chatVersionGuardBeforeWrite: true,
       taskContext: { configured: this.config.taskContext !== undefined, autoRegisterPerTask: true, optionalUserPaths: true, projectlessBrief: true, fileEnumeration: 'bounded-name-matching-only' },
       originalChatBinding: 'caller-supplied-context-not-security-authentication', quotaSource: 'native-tool-observation',

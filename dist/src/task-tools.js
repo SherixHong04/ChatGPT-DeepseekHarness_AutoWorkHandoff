@@ -17,6 +17,7 @@ import { QuotaHookBridge, quotaHookPolicy } from './quota-hooks.js';
 import { ManagedWorker } from './managed-worker.js';
 import { TaskContexts, taskContextPolicy } from './task-context.js';
 import { HandoffConsent, HANDOFF_QUESTION_MS } from './handoff-consent.js';
+import { desktopQuestionAvailable } from './desktop-question.js';
 export function toolsConfig(value) {
     const row = record(value, ['schemaVersion', 'db', 'store', 'workRoot', 'endpointFile', 'resourceRoots', 'quotaPolicy', 'chatManagement', 'quotaHooks', 'taskContext'], '任务工具配置');
     requireCondition(row.schemaVersion === 1, 'UNSUPPORTED_TOOLS_CONFIG', '任务工具配置版本不支持。');
@@ -194,8 +195,8 @@ export class TaskTools {
         for (const field of definition.inputSchema.required)
             requireCondition(Object.hasOwn(row, field), 'MISSING_FIELD', '缺少工具参数：' + field);
         if (name === 'handoff_capabilities')
-            return { schemaVersion: 1, version: '0.3.0-beta.4', transport: 'stdio', asyncHarness: true,
-                handoffConfirmation: { enabled: true, timeoutMs: HANDOFF_QUESTION_MS, defaultOnTimeout: 'handoff', declinesPersist: true, protocol: 'mcp-form-elicitation', supportedByCurrentClient: interaction !== undefined },
+            return { schemaVersion: 1, version: '0.3.0-beta.5', transport: 'stdio', asyncHarness: true,
+                handoffConfirmation: { enabled: true, timeoutMs: HANDOFF_QUESTION_MS, defaultOnTimeout: 'handoff', declinesPersist: true, protocol: 'windows-desktop', supportedByCurrentClient: desktopQuestionAvailable(), visibilityVerified: false, requiresInteractiveUnlockedDesktop: true, independentOfSelectedChat: true },
                 managedDesktopDispatch: true, managedCollection: true, chatVersionGuardBeforeWrite: true,
                 taskContext: { configured: this.config.taskContext !== undefined, autoRegisterPerTask: true, optionalUserPaths: true, projectlessBrief: true, fileEnumeration: 'bounded-name-matching-only' },
                 originalChatBinding: 'caller-supplied-context-not-security-authentication', quotaSource: 'native-tool-observation',

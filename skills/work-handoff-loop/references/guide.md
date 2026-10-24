@@ -1,5 +1,7 @@
 # 使用与兼容规则
 
+beta.5替换beta.4默认询问通道：protocol=windows-desktop，独立Windows置顶窗口与当前选中对话无关，不依赖MCP表单审批。先正常加载新版；不能把旧MCP form立即返回视为用户拒绝。实际显示后计30秒，锁屏/安全桌面/断开会话不计时，55秒内无法可靠完成则不可用且不默许；无交互桌面或执行策略限制要明确报告。完全退出GPT及无运行任务时没有新的阈值触发事件，不宣称支持后台常驻监控或安全桌面显示。
+
 0.3.0-beta.2默认quotaHooks.scope=all-conversations，与resourceRoots解耦。taskContext.root保存无工程任务摘要。新工程按每个任务自动登记到工具账本，不写全局目录名单或要求重启。旧配置没有scope时仍保留原范围，需用明确迁移启用。
 
 publish的input仍由GPT提供taskId、conversationId、title、objective、requirements、summary、remainingWork、acceptanceCriteria、version、requirementsVersion、recipients及可选deadlineAt。resourceRoot/workRoot/files可省略；这些字段由程序补齐。已有工程文件可传相对名称，附件可传已知绝对路径；只在当前工程内有限匹配文件名，不读取其他聊天、凭据或邻近文件。prepare_context是可选预览，不是额外用户审批步骤。needs-selection先由模型依本对话消歧，仍不明确时一次集中询问。任务上下文编号只防误绑，不是宿主身份认证；宿主原有审批和安全设置保持不变。

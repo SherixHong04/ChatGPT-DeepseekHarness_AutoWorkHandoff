@@ -1,5 +1,5 @@
 {
-  "version": "0.3.0-beta.4",
+  "version": "0.3.0-beta.5",
   "scanned": true,
   "files": [
     {
@@ -18,6 +18,11 @@
       "sha256": "3dd0a22a26ab852830e306cd684a204181872ccc08f0e806024b69a0b837c27c"
     },
     {
+      "path": "src/desktop-question.ts",
+      "bytes": 3155,
+      "sha256": "878497d699f4302cbfd82fe026d5a6efc4c180e2e86019c45f63590d435866f0"
+    },
+    {
       "path": "src/file-demo.ts",
       "bytes": 4969,
       "sha256": "66554be9cc3fbabfe9cf83d227b3e680a8ca52ce587744be784c8ecf397615e1"
@@ -34,13 +39,13 @@
     },
     {
       "path": "src/handoff-consent.ts",
-      "bytes": 4640,
-      "sha256": "d91f2a05cea80062414ee2ad109255f6ab487cb7e5bc918716a47c5579dbf9a7"
+      "bytes": 5225,
+      "sha256": "d4ed2b6ae58c28fa2ee41f2bfcd73fa42b61ab09fcaac339a68a244ec8382dca"
     },
     {
       "path": "src/handoff-question.ts",
-      "bytes": 1708,
-      "sha256": "0d9bdfe923f6da1119a3ac987591d5193de984775a96c64371e787850a9ff2d1"
+      "bytes": 1769,
+      "sha256": "534d062e784ffc44f8bc071ee2fb0eae39ef782178871d0f6b16479f78f91e59"
     },
     {
       "path": "src/harness-chat-plugin.ts",
@@ -99,8 +104,8 @@
     },
     {
       "path": "src/mcp-server.ts",
-      "bytes": 2053,
-      "sha256": "3714189975f60460b2729fb218c023c4128b4d9dd8413a763c20637ec24e3e99"
+      "bytes": 1974,
+      "sha256": "248535f3d92afcceb41f3a3cea215001d3d8ec8e91555f50b695fbf17eb6f044"
     },
     {
       "path": "src/native-control.ts",
@@ -129,13 +134,13 @@
     },
     {
       "path": "src/task-tools.ts",
-      "bytes": 46668,
-      "sha256": "1f3be311eafd57001cc3912ddfd9dd053b99444cf6944e3894f7bc6338b579fa"
+      "bytes": 46832,
+      "sha256": "4468ea44372ec199b552c73a279958968bbb6e8dafc95b50897c0ee1ebbdf62a"
     },
     {
       "path": "src/tool-store.ts",
-      "bytes": 7891,
-      "sha256": "260e12b5326e8017e84e3c2c4bff34a88b8a3a50bb29be96d1ac44b68ec02ece"
+      "bytes": 8091,
+      "sha256": "ed57dda82e4c5a2a11ef0a8ee22f426cc758354127cde9c068a43a1bc3a1f167"
     },
     {
       "path": "src/trial-policy.ts",
@@ -163,6 +168,11 @@
       "sha256": "7676be66f98293e604bdc6e7df8bb23f3fbc5a45aa8421af7b0a5d342a88a998"
     },
     {
+      "path": "tests/desktop-question.test.ts",
+      "bytes": 920,
+      "sha256": "69cb908e3efdcd206c121eb282e79b6f69d39bd1915e921697b9c95607132e4d"
+    },
+    {
       "path": "tests/files.test.ts",
       "bytes": 25631,
       "sha256": "d474cf5c0d6c20767b3a07f922149be6c8f9cb73ca6d9d66b32ed8faf5225f79"
@@ -179,8 +189,8 @@
     },
     {
       "path": "tests/handoff-question.test.ts",
-      "bytes": 2409,
-      "sha256": "1e6a771426ff031c1435aa82c72292683092ce7790a139335df37f64c9f9f925"
+      "bytes": 2417,
+      "sha256": "60cc7b598a871d9f9b66ba24d1719b612f8c272f040ce45d26e81bfd04130565"
     },
     {
       "path": "tests/harness-chats.test.ts",
@@ -278,6 +288,21 @@
       "sha256": "1fd6005aee98d9b97db2f0df73d71f9ec3b108ba2a7325ec1ed5bcb22bcddab4"
     },
     {
+      "path": "dist/src/desktop-question.d.ts",
+      "bytes": 443,
+      "sha256": "5bbfa05d3684624998fbe8491a00ccaee50f3f11bdb192d6fa690201512d6a97"
+    },
+    {
+      "path": "dist/src/desktop-question.js",
+      "bytes": 3779,
+      "sha256": "97aaf5c3eac671979e12b44d0ae785c0da10aa6aedd37030eec593c7f48e6b27"
+    },
+    {
+      "path": "dist/src/desktop-question.js.map",
+      "bytes": 3783,
+      "sha256": "efa8f7bc7542396154d3fab2b299460aee3926088bc335531cdda86a0b0f628d"
+    },
+    {
       "path": "dist/src/file-demo.d.ts",
       "bytes": 138,
       "sha256": "b406f29711008205fd18b782c9f5774bee37c9cf8e8cb388b9747ec0dedfdb1e"
@@ -324,18 +349,18 @@
     },
     {
       "path": "dist/src/handoff-consent.d.ts",
-      "bytes": 1565,
-      "sha256": "5c6f55e8a1115bbcf2df39a09b50db04528d0de21ded374d85613301431206ce"
+      "bytes": 1849,
+      "sha256": "6154d5691058d51dad7255c1d31921e4e8977850df63d9694d6894bb235d22e3"
     },
     {
       "path": "dist/src/handoff-consent.js",
-      "bytes": 4100,
-      "sha256": "fe72d80560495081c3a5f5f52f675e851745f1e2da993dafb6e9e6ced5047846"
+      "bytes": 4435,
+      "sha256": "00206ea8e7c6f8313823e3bf3701f08229c8ddf0e3af7e49e04c90db1c6de377"
     },
     {
       "path": "dist/src/handoff-consent.js.map",
-      "bytes": 4131,
-      "sha256": "b10d6df765f51689eb766177ee58402c74bcb8eab37362ae39b3e3e948cd25de"
+      "bytes": 4498,
+      "sha256": "b0b639c0d7fc6edaa818e9c182b3c20f5b3b70a79c1e854ce29f59666edefa99"
     },
     {
       "path": "dist/src/handoff-question.d.ts",
@@ -344,13 +369,13 @@
     },
     {
       "path": "dist/src/handoff-question.js",
-      "bytes": 1658,
-      "sha256": "de1c4dcdea5020e9233167708f9f1af2440cc4c250a9be3f4614788bf74ffe3d"
+      "bytes": 1719,
+      "sha256": "07b419de1f300685d5890e9f71c6e8d9a5d394363a5f4152ba5cdd32c2ff25b2"
     },
     {
       "path": "dist/src/handoff-question.js.map",
-      "bytes": 1397,
-      "sha256": "e898a93c486917eaa4844fa2c58b282cc337653d745262b1ff14c10a64a1f353"
+      "bytes": 1409,
+      "sha256": "97d827b62ac83238ce6d13a6c9df75e26d59d000c3502c3329f728735d29e1f9"
     },
     {
       "path": "dist/src/harness-chat-plugin.d.ts",
@@ -524,13 +549,13 @@
     },
     {
       "path": "dist/src/mcp-server.js",
-      "bytes": 2138,
-      "sha256": "246600422c683975b55f399b2af54306b8c09c8eb9e8443bce48ac7ddda57948"
+      "bytes": 2059,
+      "sha256": "37f0c8d730790196ad3f65c0a9058eaf8ea205f4a8fe114dd05d6b2793698bb9"
     },
     {
       "path": "dist/src/mcp-server.js.map",
-      "bytes": 2072,
-      "sha256": "3f028810ee0113d8ac8500478fcf15d3099f606acaa1521d1f337a2cf28a9855"
+      "bytes": 1965,
+      "sha256": "96743845584379c48a840dce7062fd019c51c4266ffb60f0983c7568412f3eec"
     },
     {
       "path": "dist/src/native-control.d.ts",
@@ -614,13 +639,13 @@
     },
     {
       "path": "dist/src/task-tools.js",
-      "bytes": 48244,
-      "sha256": "de23ad5ac5338ecd79279664001ad3bc4a41b2e30754ffbfbdf8ccf7434baa48"
+      "bytes": 48408,
+      "sha256": "33ea3aae06ea7bba83b0753d3dfaadb6fb9b1f2c4bbea9435ced6679f9f3a00a"
     },
     {
       "path": "dist/src/task-tools.js.map",
-      "bytes": 44676,
-      "sha256": "439901b76ed10a0059212e8d70731a504b78cc2d05e8357da600bb94dab944c0"
+      "bytes": 44784,
+      "sha256": "b1e799b04f8dfc4eeacc308704fd441be81e183c84fa4c2b5a0f34779b5d49ae"
     },
     {
       "path": "dist/src/tool-store.d.ts",
@@ -629,13 +654,13 @@
     },
     {
       "path": "dist/src/tool-store.js",
-      "bytes": 7195,
-      "sha256": "3211437fccad4f326092b5509b9406d7c12b54cbd07716332ea619aed2b35fd0"
+      "bytes": 7401,
+      "sha256": "dea43797c5a2a4cdc18f9c2ef5cba29dbe79e14b85bc0c04116f5fc8bf61576e"
     },
     {
       "path": "dist/src/tool-store.js.map",
-      "bytes": 7013,
-      "sha256": "22b8d38f1613482ef15aab0fb3f0e41ffd0c47721ead1c9fe6d06ff6a94bca76"
+      "bytes": 7211,
+      "sha256": "23ff5350377ac9202ca1ee269a61e9416ae31d0aa14fbb3ac488d46ecf596321"
     },
     {
       "path": "dist/src/trial-policy.d.ts",
@@ -698,6 +723,21 @@
       "sha256": "3780195226fded7f334873e9e2485ac984d6c878eafb697a7fc7c0cc5aeee295"
     },
     {
+      "path": "dist/tests/desktop-question.test.d.ts",
+      "bytes": 11,
+      "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+    },
+    {
+      "path": "dist/tests/desktop-question.test.js",
+      "bytes": 955,
+      "sha256": "b3805f903dd0b69a18c37b6ef94d48e9a42b049cfdf35a86e1bb36159206e02d"
+    },
+    {
+      "path": "dist/tests/desktop-question.test.js.map",
+      "bytes": 1199,
+      "sha256": "2f23181439e0f8c672e68d2da626739ffa305776399157cf0d7015d9ad79e645"
+    },
+    {
       "path": "dist/tests/files.test.d.ts",
       "bytes": 11,
       "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
@@ -749,13 +789,13 @@
     },
     {
       "path": "dist/tests/handoff-question.test.js",
-      "bytes": 2578,
-      "sha256": "269670a6f95057ac20fe13019d300a9abd1359f7a078e409de7f08c9e6011c4f"
+      "bytes": 2586,
+      "sha256": "463e7d44c62a4207e4144fd6ff14cfb749d5fbc76d08761e8e482b9b6bf94d5b"
     },
     {
       "path": "dist/tests/handoff-question.test.js.map",
       "bytes": 2972,
-      "sha256": "9fffd2e4ff9972fc264b73ad01f1435176eb35c3e0d626bfc20ea7b0c132e0f2"
+      "sha256": "6a07934b3ed28d55bda75f76604e8b33e96e770a3c8ad081eb52a085af9881ca"
     },
     {
       "path": "dist/tests/harness-chats.test.d.ts",
@@ -958,6 +998,11 @@
       "sha256": "2d667bc5698c6ce6def9dfd0cb0a2b466d15aa173da70490635b834b6d97246d"
     },
     {
+      "path": "scripts/desktop-question.ps1",
+      "bytes": 4740,
+      "sha256": "71b6326b317ee0f0c9bc651964264cf56c4f3f2d6916bc5bba96bb16f362807b"
+    },
+    {
       "path": "scripts/doctor.mjs",
       "bytes": 3590,
       "sha256": "c43940fe11f4aa15951751b8b4792ec426d3e6cbaf01e4e64b3958016769ef9f"
@@ -989,13 +1034,13 @@
     },
     {
       "path": "skills/work-handoff-loop/SKILL.md",
-      "bytes": 5946,
-      "sha256": "bfc080490fa76fdf63d90794d06e7675f33ea063dcdd0629dd9aaff38eac659e"
+      "bytes": 6455,
+      "sha256": "8dad888bcb10ced6955a16efa38ee5c5a3d44a775a309bff59b0966dcf8fa889"
     },
     {
       "path": "skills/work-handoff-loop/references/guide.md",
-      "bytes": 4626,
-      "sha256": "12a0bc1a969092201d86a7e1dc195cb66c9584b1074efdcfd44aeccfa72bfa17"
+      "bytes": 5156,
+      "sha256": "b8ee8804414638035d02d46712df06f89b92d31c5c93927ed1a9b48649afd5f0"
     },
     {
       "path": "plugins/harness-chat-manager/index.mjs",
@@ -1049,8 +1094,8 @@
     },
     {
       "path": "docs/HANDOFF-CONFIRMATION.md",
-      "bytes": 1533,
-      "sha256": "b06b5cca452f6aa249fedb0517b08fb9fa049d552775b4ddf96c15976582ca3a"
+      "bytes": 2688,
+      "sha256": "23c2efeeb19aa2d352f9e694dcaa8c6cb80ef98b78362ca4cc81d62eba029d29"
     },
     {
       "path": "docs/INSTALL.md",
@@ -1085,12 +1130,12 @@
     {
       "path": "package.json",
       "bytes": 1330,
-      "sha256": "fb63824104fd355073147db60a5efcc53579ab68788faec2953a669f1c977d37"
+      "sha256": "55b988332b2b362f523d2094f526b0e8e08ab40c186b3999b03844799f2b44ac"
     },
     {
       "path": "package-lock.json",
       "bytes": 45781,
-      "sha256": "84d87e3055c3ed492c7d8d0f006f027868a2ec81aafa6caff50ca29ba885cec0"
+      "sha256": "510003c42e5bb70aa739a8c5ac7f0ee16b9e5308dea7609b750d724489364dc5"
     },
     {
       "path": "tsconfig.json",
@@ -1114,8 +1159,8 @@
     },
     {
       "path": "verification/RESULTS.md",
-      "bytes": 5802,
-      "sha256": "a582db794f3cb06ea43a059fd1e8caf397346f06cca8d89cbad50fc1e6d67b64"
+      "bytes": 6402,
+      "sha256": "fefc7e222bb2db2259167603176797e39ac11c85fb2a3686317b4d736b30ef28"
     },
     {
       "path": "verification/install-check.json",
